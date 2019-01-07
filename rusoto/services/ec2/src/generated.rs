@@ -89828,6 +89828,2254 @@ impl Ec2 for Ec2Client {
     }
 }
 
+impl<T: ?Sized + Ec2> Ec2 for ::std::rc::Rc<T> {
+    /// <p>Accepts the Convertible Reserved Instance exchange quote described in the <a>GetReservedInstancesExchangeQuote</a> call.</p>
+    fn accept_reserved_instances_exchange_quote(
+        &self,
+        input: AcceptReservedInstancesExchangeQuoteRequest,
+    ) -> RusotoFuture<
+        AcceptReservedInstancesExchangeQuoteResult,
+        AcceptReservedInstancesExchangeQuoteError,
+    > {
+        Ec2::accept_reserved_instances_exchange_quote(&(**self), input)
+    }
+
+    /// <p>Accepts one or more interface VPC endpoint connection requests to your VPC endpoint service.</p>
+    fn accept_vpc_endpoint_connections(
+        &self,
+        input: AcceptVpcEndpointConnectionsRequest,
+    ) -> RusotoFuture<AcceptVpcEndpointConnectionsResult, AcceptVpcEndpointConnectionsError> {
+        Ec2::accept_vpc_endpoint_connections(&(**self), input)
+    }
+
+    /// <p>Accept a VPC peering connection request. To accept a request, the VPC peering connection must be in the <code>pending-acceptance</code> state, and you must be the owner of the peer VPC. Use <a>DescribeVpcPeeringConnections</a> to view your outstanding VPC peering connection requests.</p> <p>For an inter-region VPC peering connection request, you must accept the VPC peering connection in the region of the accepter VPC.</p>
+    fn accept_vpc_peering_connection(
+        &self,
+        input: AcceptVpcPeeringConnectionRequest,
+    ) -> RusotoFuture<AcceptVpcPeeringConnectionResult, AcceptVpcPeeringConnectionError> {
+        Ec2::accept_vpc_peering_connection(&(**self), input)
+    }
+
+    /// <p>Allocates an Elastic IP address.</p> <p>An Elastic IP address is for use either in the EC2-Classic platform or in a VPC. By default, you can allocate 5 Elastic IP addresses for EC2-Classic per region and 5 Elastic IP addresses for EC2-VPC per region.</p> <p>If you release an Elastic IP address for use in a VPC, you might be able to recover it. To recover an Elastic IP address that you released, specify it in the <code>Address</code> parameter. Note that you cannot recover an Elastic IP address that you released after it is allocated to another AWS account.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn allocate_address(
+        &self,
+        input: AllocateAddressRequest,
+    ) -> RusotoFuture<AllocateAddressResult, AllocateAddressError> {
+        Ec2::allocate_address(&(**self), input)
+    }
+
+    /// <p>Allocates a Dedicated Host to your account. At a minimum, specify the instance size type, Availability Zone, and quantity of hosts to allocate.</p>
+    fn allocate_hosts(
+        &self,
+        input: AllocateHostsRequest,
+    ) -> RusotoFuture<AllocateHostsResult, AllocateHostsError> {
+        Ec2::allocate_hosts(&(**self), input)
+    }
+
+    /// <p>Assigns one or more IPv6 addresses to the specified network interface. You can specify one or more specific IPv6 addresses, or you can specify the number of IPv6 addresses to be automatically assigned from within the subnet's IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private IPv4 addresses, and the limit varies per instance type. For information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses Per Network Interface Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn assign_ipv_6_addresses(
+        &self,
+        input: AssignIpv6AddressesRequest,
+    ) -> RusotoFuture<AssignIpv6AddressesResult, AssignIpv6AddressesError> {
+        Ec2::assign_ipv_6_addresses(&(**self), input)
+    }
+
+    /// <p>Assigns one or more secondary private IP addresses to the specified network interface. You can specify one or more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned within the subnet's CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For information about instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more information about Elastic IP addresses, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>AssignPrivateIpAddresses is available only in EC2-VPC.</p>
+    fn assign_private_ip_addresses(
+        &self,
+        input: AssignPrivateIpAddressesRequest,
+    ) -> RusotoFuture<(), AssignPrivateIpAddressesError> {
+        Ec2::assign_private_ip_addresses(&(**self), input)
+    }
+
+    /// <p><p>Associates an Elastic IP address with an instance or a network interface.</p> <p>An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>[EC2-Classic, VPC in an EC2-VPC-only account] If the Elastic IP address is already associated with a different instance, it is disassociated from that instance and associated with the specified instance. If you associate an Elastic IP address with an instance that has an existing Elastic IP address, the existing address is disassociated from the instance, but remains allocated to your account.</p> <p>[VPC in an EC2-Classic account] If you don&#39;t specify a private IP address, the Elastic IP address is associated with the primary IP address. If the Elastic IP address is already associated with a different instance or a network interface, you get an error unless you allow reassociation. You cannot associate an Elastic IP address with an instance or network interface that has an existing Elastic IP address.</p> <important> <p>This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn&#39;t return an error, and you may be charged for each time the Elastic IP address is remapped to the same instance. For more information, see the <i>Elastic IP Addresses</i> section of <a href="http://aws.amazon.com/ec2/pricing/">Amazon EC2 Pricing</a>.</p> </important></p>
+    fn associate_address(
+        &self,
+        input: AssociateAddressRequest,
+    ) -> RusotoFuture<AssociateAddressResult, AssociateAddressError> {
+        Ec2::associate_address(&(**self), input)
+    }
+
+    /// <p>Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC.</p> <p>After you associate the options with the VPC, any existing instances and all new instances that you launch in that VPC use the options. You don't need to restart or relaunch the instances. They automatically pick up the changes within a few hours, depending on how frequently the instance renews its DHCP lease. You can explicitly renew the lease using the operating system on the instance.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">DHCP Options Sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn associate_dhcp_options(
+        &self,
+        input: AssociateDhcpOptionsRequest,
+    ) -> RusotoFuture<(), AssociateDhcpOptionsError> {
+        Ec2::associate_dhcp_options(&(**self), input)
+    }
+
+    /// <p>Associates an IAM instance profile with a running or stopped instance. You cannot associate more than one IAM instance profile with an instance.</p>
+    fn associate_iam_instance_profile(
+        &self,
+        input: AssociateIamInstanceProfileRequest,
+    ) -> RusotoFuture<AssociateIamInstanceProfileResult, AssociateIamInstanceProfileError> {
+        Ec2::associate_iam_instance_profile(&(**self), input)
+    }
+
+    /// <p>Associates a subnet with a route table. The subnet and route table must be in the same VPC. This association causes traffic originating from the subnet to be routed according to the routes in the route table. The action returns an association ID, which you need in order to disassociate the route table from the subnet later. A route table can be associated with multiple subnets.</p> <p>For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn associate_route_table(
+        &self,
+        input: AssociateRouteTableRequest,
+    ) -> RusotoFuture<AssociateRouteTableResult, AssociateRouteTableError> {
+        Ec2::associate_route_table(&(**self), input)
+    }
+
+    /// <p>Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a prefix length of /64.</p>
+    fn associate_subnet_cidr_block(
+        &self,
+        input: AssociateSubnetCidrBlockRequest,
+    ) -> RusotoFuture<AssociateSubnetCidrBlockResult, AssociateSubnetCidrBlockError> {
+        Ec2::associate_subnet_cidr_block(&(**self), input)
+    }
+
+    /// <p>Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, or you can associate an Amazon-provided IPv6 CIDR block. The IPv6 CIDR block size is fixed at /56.</p> <p>For more information about associating CIDR blocks with your VPC and applicable restrictions, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing">VPC and Subnet Sizing</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn associate_vpc_cidr_block(
+        &self,
+        input: AssociateVpcCidrBlockRequest,
+    ) -> RusotoFuture<AssociateVpcCidrBlockResult, AssociateVpcCidrBlockError> {
+        Ec2::associate_vpc_cidr_block(&(**self), input)
+    }
+
+    /// <p>Links an EC2-Classic instance to a ClassicLink-enabled VPC through one or more of the VPC's security groups. You cannot link an EC2-Classic instance to more than one VPC at a time. You can only link an instance that's in the <code>running</code> state. An instance is automatically unlinked from a VPC when it's stopped - you can link it to the VPC again when you restart it.</p> <p>After you've linked an instance, you cannot change the VPC security groups that are associated with it. To change the security groups, you must first unlink the instance, and then link it again.</p> <p>Linking your instance to a VPC is sometimes referred to as <i>attaching</i> your instance.</p>
+    fn attach_classic_link_vpc(
+        &self,
+        input: AttachClassicLinkVpcRequest,
+    ) -> RusotoFuture<AttachClassicLinkVpcResult, AttachClassicLinkVpcError> {
+        Ec2::attach_classic_link_vpc(&(**self), input)
+    }
+
+    /// <p>Attaches an Internet gateway to a VPC, enabling connectivity between the Internet and the VPC. For more information about your VPC and Internet gateway, see the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/">Amazon Virtual Private Cloud User Guide</a>.</p>
+    fn attach_internet_gateway(
+        &self,
+        input: AttachInternetGatewayRequest,
+    ) -> RusotoFuture<(), AttachInternetGatewayError> {
+        Ec2::attach_internet_gateway(&(**self), input)
+    }
+
+    /// <p>Attaches a network interface to an instance.</p>
+    fn attach_network_interface(
+        &self,
+        input: AttachNetworkInterfaceRequest,
+    ) -> RusotoFuture<AttachNetworkInterfaceResult, AttachNetworkInterfaceError> {
+        Ec2::attach_network_interface(&(**self), input)
+    }
+
+    /// <p>Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name.</p> <p>Encrypted EBS volumes may only be attached to instances that support Amazon EBS encryption. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>For a list of supported device names, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html">Attaching an EBS Volume to an Instance</a>. Any device names that aren't reserved for instance store volumes can be used for EBS volumes. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html">Amazon EC2 Instance Store</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>If a volume has an AWS Marketplace product code:</p> <ul> <li> <p>The volume can be attached only to a stopped instance.</p> </li> <li> <p>AWS Marketplace product codes are copied from the volume to the instance.</p> </li> <li> <p>You must be subscribed to the product.</p> </li> <li> <p>The instance type and operating system of the instance must support the product. For example, you can't detach a volume from a Windows instance and attach it to a Linux instance.</p> </li> </ul> <p>For more information about EBS volumes, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html">Attaching Amazon EBS Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn attach_volume(
+        &self,
+        input: AttachVolumeRequest,
+    ) -> RusotoFuture<VolumeAttachment, AttachVolumeError> {
+        Ec2::attach_volume(&(**self), input)
+    }
+
+    /// <p>Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">AWS Managed VPN Connections</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn attach_vpn_gateway(
+        &self,
+        input: AttachVpnGatewayRequest,
+    ) -> RusotoFuture<AttachVpnGatewayResult, AttachVpnGatewayError> {
+        Ec2::attach_vpn_gateway(&(**self), input)
+    }
+
+    /// <p>[EC2-VPC only] Adds one or more egress rules to a security group for use with a VPC. Specifically, this action permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more destination security groups for the same VPC. This action doesn't apply to security groups for use in EC2-Classic. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. For more information about security group limits, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a>.</p> <p>Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also specify the ICMP type and code. You can use -1 for the type or code to mean all types or all codes. You can optionally specify a description for the rule.</p> <p>Rule changes are propagated to affected instances as quickly as possible. However, a small delay might occur.</p>
+    fn authorize_security_group_egress(
+        &self,
+        input: AuthorizeSecurityGroupEgressRequest,
+    ) -> RusotoFuture<(), AuthorizeSecurityGroupEgressError> {
+        Ec2::authorize_security_group_egress(&(**self), input)
+    }
+
+    /// <p>Adds one or more ingress rules to a security group.</p> <p>Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</p> <p>[EC2-Classic] This action gives one or more IPv4 CIDR address ranges permission to access a security group in your account, or gives one or more security groups (called the <i>source groups</i>) permission to access a security group for your account. A source group can be for your own AWS account, or another. You can have up to 100 rules per group.</p> <p>[EC2-VPC] This action gives one or more IPv4 or IPv6 CIDR address ranges permission to access a security group in your VPC, or gives one or more other security groups (called the <i>source groups</i>) permission to access a security group for your VPC. The security groups must all be for the same VPC or a peer VPC in a VPC peering connection. For more information about VPC security group limits, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a>.</p> <p>You can optionally specify a description for the security group rule.</p>
+    fn authorize_security_group_ingress(
+        &self,
+        input: AuthorizeSecurityGroupIngressRequest,
+    ) -> RusotoFuture<(), AuthorizeSecurityGroupIngressError> {
+        Ec2::authorize_security_group_ingress(&(**self), input)
+    }
+
+    /// <p><p>Bundles an Amazon instance store-backed Windows instance.</p> <p>During bundling, only the root device volume (C:) is bundled. Data on other instance store volumes is not preserved.</p> <note> <p>This action is not applicable for Linux/Unix instances or Windows instances that are backed by Amazon EBS.</p> </note></p>
+    fn bundle_instance(
+        &self,
+        input: BundleInstanceRequest,
+    ) -> RusotoFuture<BundleInstanceResult, BundleInstanceError> {
+        Ec2::bundle_instance(&(**self), input)
+    }
+
+    /// <p>Cancels a bundling operation for an instance store-backed Windows instance.</p>
+    fn cancel_bundle_task(
+        &self,
+        input: CancelBundleTaskRequest,
+    ) -> RusotoFuture<CancelBundleTaskResult, CancelBundleTaskError> {
+        Ec2::cancel_bundle_task(&(**self), input)
+    }
+
+    /// <p>Cancels an active conversion task. The task can be the import of an instance or volume. The action removes all artifacts of the conversion, including a partially uploaded volume or instance. If the conversion is complete or is in the process of transferring the final disk image, the command fails and returns an exception.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html">Importing a Virtual Machine Using the Amazon EC2 CLI</a>.</p>
+    fn cancel_conversion_task(
+        &self,
+        input: CancelConversionRequest,
+    ) -> RusotoFuture<(), CancelConversionTaskError> {
+        Ec2::cancel_conversion_task(&(**self), input)
+    }
+
+    /// <p>Cancels an active export task. The request removes all artifacts of the export, including any partially-created Amazon S3 objects. If the export task is complete or is in the process of transferring the final disk image, the command fails and returns an error.</p>
+    fn cancel_export_task(
+        &self,
+        input: CancelExportTaskRequest,
+    ) -> RusotoFuture<(), CancelExportTaskError> {
+        Ec2::cancel_export_task(&(**self), input)
+    }
+
+    /// <p>Cancels an in-process import virtual machine or import snapshot task.</p>
+    fn cancel_import_task(
+        &self,
+        input: CancelImportTaskRequest,
+    ) -> RusotoFuture<CancelImportTaskResult, CancelImportTaskError> {
+        Ec2::cancel_import_task(&(**self), input)
+    }
+
+    /// <p>Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn cancel_reserved_instances_listing(
+        &self,
+        input: CancelReservedInstancesListingRequest,
+    ) -> RusotoFuture<CancelReservedInstancesListingResult, CancelReservedInstancesListingError>
+    {
+        Ec2::cancel_reserved_instances_listing(&(**self), input)
+    }
+
+    /// <p>Cancels the specified Spot Fleet requests.</p> <p>After you cancel a Spot Fleet request, the Spot Fleet launches no new Spot Instances. You must specify whether the Spot Fleet should also terminate its Spot Instances. If you terminate the instances, the Spot Fleet request enters the <code>cancelled_terminating</code> state. Otherwise, the Spot Fleet request enters the <code>cancelled_running</code> state and the instances continue to run until they are interrupted or you terminate them manually.</p>
+    fn cancel_spot_fleet_requests(
+        &self,
+        input: CancelSpotFleetRequestsRequest,
+    ) -> RusotoFuture<CancelSpotFleetRequestsResponse, EC2CancelSpotFleetRequestsError> {
+        Ec2::cancel_spot_fleet_requests(&(**self), input)
+    }
+
+    /// <p><p>Cancels one or more Spot Instance requests.</p> <important> <p>Canceling a Spot Instance request does not terminate running Spot Instances associated with the request.</p> </important></p>
+    fn cancel_spot_instance_requests(
+        &self,
+        input: CancelSpotInstanceRequestsRequest,
+    ) -> RusotoFuture<CancelSpotInstanceRequestsResult, CancelSpotInstanceRequestsError> {
+        Ec2::cancel_spot_instance_requests(&(**self), input)
+    }
+
+    /// <p>Determines whether a product code is associated with an instance. This action can only be used by the owner of the product code. It is useful when a product code owner must verify whether another user's instance is eligible for support.</p>
+    fn confirm_product_instance(
+        &self,
+        input: ConfirmProductInstanceRequest,
+    ) -> RusotoFuture<ConfirmProductInstanceResult, ConfirmProductInstanceError> {
+        Ec2::confirm_product_instance(&(**self), input)
+    }
+
+    /// <p>Copies the specified Amazon FPGA Image (AFI) to the current region.</p>
+    fn copy_fpga_image(
+        &self,
+        input: CopyFpgaImageRequest,
+    ) -> RusotoFuture<CopyFpgaImageResult, CopyFpgaImageError> {
+        Ec2::copy_fpga_image(&(**self), input)
+    }
+
+    /// <p>Initiates the copy of an AMI from the specified source region to the current region. You specify the destination region by using its endpoint when making the request.</p> <p>For more information about the prerequisites and limits when copying an AMI, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html">Copying an AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn copy_image(&self, input: CopyImageRequest) -> RusotoFuture<CopyImageResult, CopyImageError> {
+        Ec2::copy_image(&(**self), input)
+    }
+
+    /// <p>Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3. You can copy the snapshot within the same region or from one region to another. You can use the snapshot to create EBS volumes or Amazon Machine Images (AMIs). The snapshot is copied to the regional endpoint that you send the HTTP request to.</p> <p>Copies of encrypted EBS snapshots remain encrypted. Copies of unencrypted snapshots remain unencrypted, unless the <code>Encrypted</code> flag is specified during the snapshot copy operation. By default, encrypted snapshot copies use the default AWS Key Management Service (AWS KMS) customer master key (CMK); however, you can specify a non-default CMK with the <code>KmsKeyId</code> parameter. </p> <p>To copy an encrypted snapshot that has been shared from another account, you must have permissions for the CMK used to encrypt the snapshot.</p> <p>Snapshots created by copying another snapshot have an arbitrary volume ID that should not be used for any purpose.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html">Copying an Amazon EBS Snapshot</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn copy_snapshot(
+        &self,
+        input: CopySnapshotRequest,
+    ) -> RusotoFuture<CopySnapshotResult, CopySnapshotError> {
+        Ec2::copy_snapshot(&(**self), input)
+    }
+
+    /// <p><p>Provides information to AWS about your VPN customer gateway device. The customer gateway is the appliance at your end of the VPN connection. (The device on the AWS side of the VPN connection is the virtual private gateway.) You must provide the Internet-routable IP address of the customer gateway&#39;s external interface. The IP address must be static and may be behind a device performing network address translation (NAT).</p> <p>For devices that use Border Gateway Protocol (BGP), you can also provide the device&#39;s BGP Autonomous System Number (ASN). You can use an existing ASN assigned to your network. If you don&#39;t have an ASN already, you can use a private ASN (in the 64512 - 65534 range).</p> <note> <p>Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534, with the exception of 7224, which is reserved in the <code>us-east-1</code> region, and 9059, which is reserved in the <code>eu-west-1</code> region.</p> </note> <p>For more information about VPN customer gateways, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">AWS Managed VPN Connections</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p> <important> <p>You cannot create more than one customer gateway with the same VPN type, IP address, and BGP ASN parameter values. If you run an identical request more than one time, the first request creates the customer gateway, and subsequent requests return information about the existing customer gateway. The subsequent requests do not create new customer gateway resources.</p> </important></p>
+    fn create_customer_gateway(
+        &self,
+        input: CreateCustomerGatewayRequest,
+    ) -> RusotoFuture<CreateCustomerGatewayResult, CreateCustomerGatewayError> {
+        Ec2::create_customer_gateway(&(**self), input)
+    }
+
+    /// <p>Creates a default subnet with a size <code>/20</code> IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-subnet">Creating a Default Subnet</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_default_subnet(
+        &self,
+        input: CreateDefaultSubnetRequest,
+    ) -> RusotoFuture<CreateDefaultSubnetResult, CreateDefaultSubnetError> {
+        Ec2::create_default_subnet(&(**self), input)
+    }
+
+    /// <p>Creates a default VPC with a size <code>/16</code> IPv4 CIDR block and a default subnet in each Availability Zone. For more information about the components of a default VPC, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html">Default VPC and Default Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. You cannot specify the components of the default VPC yourself.</p> <p>You can create a default VPC if you deleted your previous default VPC. You cannot have more than one default VPC per region. </p> <p>If your account supports EC2-Classic, you cannot use this action to create a default VPC in a region that supports EC2-Classic. If you want a default VPC in a region that supports EC2-Classic, see "I really want a default VPC for my existing EC2 account. Is that possible?" in the <a href="http://aws.amazon.com/vpc/faqs/#Default_VPCs">Default VPCs FAQ</a>.</p>
+    fn create_default_vpc(
+        &self,
+        input: CreateDefaultVpcRequest,
+    ) -> RusotoFuture<CreateDefaultVpcResult, CreateDefaultVpcError> {
+        Ec2::create_default_vpc(&(**self), input)
+    }
+
+    /// <p>Creates a set of DHCP options for your VPC. After creating the set, you must associate it with the VPC, causing all existing and new instances that you launch in the VPC to use this set of DHCP options. The following are the individual DHCP options you can specify. For more information about the options, see <a href="http://www.ietf.org/rfc/rfc2132.txt">RFC 2132</a>.</p> <ul> <li> <p> <code>domain-name-servers</code> - The IP addresses of up to four domain name servers, or AmazonProvidedDNS. The default DHCP option set specifies AmazonProvidedDNS. If specifying more than one domain name server, specify the IP addresses in a single parameter, separated by commas. If you want your instance to receive a custom DNS hostname as specified in <code>domain-name</code>, you must set <code>domain-name-servers</code> to a custom DNS server.</p> </li> <li> <p> <code>domain-name</code> - If you're using AmazonProvidedDNS in <code>us-east-1</code>, specify <code>ec2.internal</code>. If you're using AmazonProvidedDNS in another region, specify <code>region.compute.internal</code> (for example, <code>ap-northeast-1.compute.internal</code>). Otherwise, specify a domain name (for example, <code>MyCompany.com</code>). This value is used to complete unqualified DNS hostnames. <b>Important</b>: Some Linux operating systems accept multiple domain names separated by spaces. However, Windows and other Linux operating systems treat the value as a single domain, which results in unexpected behavior. If your DHCP options set is associated with a VPC that has instances with multiple operating systems, specify only one domain name.</p> </li> <li> <p> <code>ntp-servers</code> - The IP addresses of up to four Network Time Protocol (NTP) servers.</p> </li> <li> <p> <code>netbios-name-servers</code> - The IP addresses of up to four NetBIOS name servers.</p> </li> <li> <p> <code>netbios-node-type</code> - The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (broadcast and multicast are not currently supported). For more information about these node types, see <a href="http://www.ietf.org/rfc/rfc2132.txt">RFC 2132</a>.</p> </li> </ul> <p>Your VPC automatically starts out with a set of DHCP options that includes only a DNS server that we provide (AmazonProvidedDNS). If you create a set of options, and if your VPC has an Internet gateway, make sure to set the <code>domain-name-servers</code> option either to <code>AmazonProvidedDNS</code> or to a domain name server of your choice. For more information about DHCP options, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">DHCP Options Sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_dhcp_options(
+        &self,
+        input: CreateDhcpOptionsRequest,
+    ) -> RusotoFuture<CreateDhcpOptionsResult, CreateDhcpOptionsError> {
+        Ec2::create_dhcp_options(&(**self), input)
+    }
+
+    /// <p>[IPv6 only] Creates an egress-only Internet gateway for your VPC. An egress-only Internet gateway is used to enable outbound communication over IPv6 from instances in your VPC to the Internet, and prevents hosts outside of your VPC from initiating an IPv6 connection with your instance.</p>
+    fn create_egress_only_internet_gateway(
+        &self,
+        input: CreateEgressOnlyInternetGatewayRequest,
+    ) -> RusotoFuture<CreateEgressOnlyInternetGatewayResult, CreateEgressOnlyInternetGatewayError>
+    {
+        Ec2::create_egress_only_internet_gateway(&(**self), input)
+    }
+
+    /// <p>Launches an EC2 Fleet.</p> <p>You can create a single EC2 Fleet that includes multiple launch specifications that vary by instance type, AMI, Availability Zone, or subnet.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html">Launching an EC2 Fleet</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn create_fleet(
+        &self,
+        input: CreateFleetRequest,
+    ) -> RusotoFuture<CreateFleetResult, CreateFleetError> {
+        Ec2::create_fleet(&(**self), input)
+    }
+
+    /// <p>Creates one or more flow logs to capture IP traffic for a specific network interface, subnet, or VPC. Flow logs are delivered to a specified log group in Amazon CloudWatch Logs. If you specify a VPC or subnet in the request, a log stream is created in CloudWatch Logs for each network interface in the subnet or VPC. Log streams can include information about accepted and rejected traffic to a network interface. You can view the data in your log streams using Amazon CloudWatch Logs.</p> <p>In your request, you must also specify an IAM role that has permission to publish logs to CloudWatch Logs.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html">VPC Flow Logs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_flow_logs(
+        &self,
+        input: CreateFlowLogsRequest,
+    ) -> RusotoFuture<CreateFlowLogsResult, CreateFlowLogsError> {
+        Ec2::create_flow_logs(&(**self), input)
+    }
+
+    /// <p>Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP).</p> <p>The create operation is asynchronous. To verify that the AFI is ready for use, check the output logs.</p> <p>An AFI contains the FPGA bitstream that is ready to download to an FPGA. You can securely deploy an AFI on one or more FPGA-accelerated instances. For more information, see the <a href="https://github.com/aws/aws-fpga/">AWS FPGA Hardware Development Kit</a>.</p>
+    fn create_fpga_image(
+        &self,
+        input: CreateFpgaImageRequest,
+    ) -> RusotoFuture<CreateFpgaImageResult, CreateFpgaImageError> {
+        Ec2::create_fpga_image(&(**self), input)
+    }
+
+    /// <p>Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped.</p> <p>If you customized your instance with instance store volumes or EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating Amazon EBS-Backed Linux AMIs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn create_image(
+        &self,
+        input: CreateImageRequest,
+    ) -> RusotoFuture<CreateImageResult, CreateImageError> {
+        Ec2::create_image(&(**self), input)
+    }
+
+    /// <p>Exports a running or stopped instance to an S3 bucket.</p> <p>For information about the supported operating systems, image formats, and known limitations for the types of instances you can export, see <a href="http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html">Exporting an Instance as a VM Using VM Import/Export</a> in the <i>VM Import/Export User Guide</i>.</p>
+    fn create_instance_export_task(
+        &self,
+        input: CreateInstanceExportTaskRequest,
+    ) -> RusotoFuture<CreateInstanceExportTaskResult, CreateInstanceExportTaskError> {
+        Ec2::create_instance_export_task(&(**self), input)
+    }
+
+    /// <p>Creates an Internet gateway for use with a VPC. After creating the Internet gateway, you attach it to a VPC using <a>AttachInternetGateway</a>.</p> <p>For more information about your VPC and Internet gateway, see the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/">Amazon Virtual Private Cloud User Guide</a>.</p>
+    fn create_internet_gateway(
+        &self,
+        input: CreateInternetGatewayRequest,
+    ) -> RusotoFuture<CreateInternetGatewayResult, CreateInternetGatewayError> {
+        Ec2::create_internet_gateway(&(**self), input)
+    }
+
+    /// <p>Creates a 2048-bit RSA key pair with the specified name. Amazon EC2 stores the public key and displays the private key for you to save to a file. The private key is returned as an unencrypted PEM encoded PKCS#1 private key. If a key with the specified name already exists, Amazon EC2 returns an error.</p> <p>You can have up to five thousand key pairs per region.</p> <p>The key pair returned to you is available only in the region in which you create it. If you prefer, you can create your own key pair using a third-party tool and upload it to any region using <a>ImportKeyPair</a>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn create_key_pair(
+        &self,
+        input: CreateKeyPairRequest,
+    ) -> RusotoFuture<KeyPair, CreateKeyPairError> {
+        Ec2::create_key_pair(&(**self), input)
+    }
+
+    /// <p>Creates a launch template. A launch template contains the parameters to launch an instance. When you launch an instance using <a>RunInstances</a>, you can specify a launch template instead of providing the launch parameters in the request.</p>
+    fn create_launch_template(
+        &self,
+        input: CreateLaunchTemplateRequest,
+    ) -> RusotoFuture<CreateLaunchTemplateResult, CreateLaunchTemplateError> {
+        Ec2::create_launch_template(&(**self), input)
+    }
+
+    /// <p>Creates a new version for a launch template. You can specify an existing version of launch template from which to base the new version.</p> <p>Launch template versions are numbered in the order in which they are created. You cannot specify, change, or replace the numbering of launch template versions.</p>
+    fn create_launch_template_version(
+        &self,
+        input: CreateLaunchTemplateVersionRequest,
+    ) -> RusotoFuture<CreateLaunchTemplateVersionResult, CreateLaunchTemplateVersionError> {
+        Ec2::create_launch_template_version(&(**self), input)
+    }
+
+    /// <p>Creates a NAT gateway in the specified public subnet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. Internet-bound traffic from a private subnet can be routed to the NAT gateway, therefore enabling instances in the private subnet to connect to the internet. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html">NAT Gateways</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_nat_gateway(
+        &self,
+        input: CreateNatGatewayRequest,
+    ) -> RusotoFuture<CreateNatGatewayResult, CreateNatGatewayError> {
+        Ec2::create_nat_gateway(&(**self), input)
+    }
+
+    /// <p>Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.</p> <p>For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_network_acl(
+        &self,
+        input: CreateNetworkAclRequest,
+    ) -> RusotoFuture<CreateNetworkAclResult, CreateNetworkAclError> {
+        Ec2::create_network_acl(&(**self), input)
+    }
+
+    /// <p>Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules.</p> <p>We recommend that you leave room between the rule numbers (for example, 100, 110, 120, ...), and not number them one right after the other (for example, 101, 102, 103, ...). This makes it easier to add a rule between existing ones without having to renumber the rules.</p> <p>After you add an entry, you can't modify it; you must either replace it, or create an entry and delete the old one.</p> <p>For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_network_acl_entry(
+        &self,
+        input: CreateNetworkAclEntryRequest,
+    ) -> RusotoFuture<(), CreateNetworkAclEntryError> {
+        Ec2::create_network_acl_entry(&(**self), input)
+    }
+
+    /// <p>Creates a network interface in the specified subnet.</p> <p>For more information about network interfaces, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html">Elastic Network Interfaces</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_network_interface(
+        &self,
+        input: CreateNetworkInterfaceRequest,
+    ) -> RusotoFuture<CreateNetworkInterfaceResult, CreateNetworkInterfaceError> {
+        Ec2::create_network_interface(&(**self), input)
+    }
+
+    /// <p>Grants an AWS-authorized account permission to attach the specified network interface to an instance in their account.</p> <p>You can grant permission to a single AWS account only, and only one account at a time.</p>
+    fn create_network_interface_permission(
+        &self,
+        input: CreateNetworkInterfacePermissionRequest,
+    ) -> RusotoFuture<CreateNetworkInterfacePermissionResult, CreateNetworkInterfacePermissionError>
+    {
+        Ec2::create_network_interface_permission(&(**self), input)
+    }
+
+    /// <p>Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group. </p> <p>A <code>cluster</code> placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A <code>spread</code> placement group places instances on distinct hardware.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn create_placement_group(
+        &self,
+        input: CreatePlacementGroupRequest,
+    ) -> RusotoFuture<(), CreatePlacementGroupError> {
+        Ec2::create_placement_group(&(**self), input)
+    }
+
+    /// <p>Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace. You can submit one Standard Reserved Instance listing at a time. To get a list of your Standard Reserved Instances, you can use the <a>DescribeReservedInstances</a> operation.</p> <note> <p>Only Standard Reserved Instances with a capacity reservation can be sold in the Reserved Instance Marketplace. Convertible Reserved Instances and Standard Reserved Instances with a regional benefit cannot be sold.</p> </note> <p>The Reserved Instance Marketplace matches sellers who want to resell Standard Reserved Instance capacity that they no longer need with buyers who want to purchase additional capacity. Reserved Instances bought and sold through the Reserved Instance Marketplace work like any other Reserved Instances.</p> <p>To sell your Standard Reserved Instances, you must first register as a seller in the Reserved Instance Marketplace. After completing the registration process, you can create a Reserved Instance Marketplace listing of some or all of your Standard Reserved Instances, and specify the upfront price to receive for them. Your Standard Reserved Instance listings then become available for purchase. To view the details of your Standard Reserved Instance listing, you can use the <a>DescribeReservedInstancesListings</a> operation.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn create_reserved_instances_listing(
+        &self,
+        input: CreateReservedInstancesListingRequest,
+    ) -> RusotoFuture<CreateReservedInstancesListingResult, CreateReservedInstancesListingError>
+    {
+        Ec2::create_reserved_instances_listing(&(**self), input)
+    }
+
+    /// <p>Creates a route in a route table within a VPC.</p> <p>You must specify one of the following targets: Internet gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, or egress-only Internet gateway.</p> <p>When determining how to route traffic, we use the route with the most specific match. For example, traffic is destined for the IPv4 address <code>192.0.2.3</code>, and the route table includes the following two IPv4 routes:</p> <ul> <li> <p> <code>192.0.2.0/24</code> (goes to some target A)</p> </li> <li> <p> <code>192.0.2.0/28</code> (goes to some target B)</p> </li> </ul> <p>Both routes apply to the traffic destined for <code>192.0.2.3</code>. However, the second route in the list covers a smaller number of IP addresses and is therefore more specific, so we use that route to determine where to target the traffic.</p> <p>For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_route(
+        &self,
+        input: CreateRouteRequest,
+    ) -> RusotoFuture<CreateRouteResult, CreateRouteError> {
+        Ec2::create_route(&(**self), input)
+    }
+
+    /// <p>Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.</p> <p>For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_route_table(
+        &self,
+        input: CreateRouteTableRequest,
+    ) -> RusotoFuture<CreateRouteTableResult, CreateRouteTableError> {
+        Ec2::create_route_table(&(**self), input)
+    }
+
+    /// <p>Creates a security group.</p> <p>A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Amazon EC2 Security Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i> and <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p> <important> <p>EC2-Classic: You can have up to 500 security groups.</p> <p>EC2-VPC: You can create up to 500 security groups per VPC.</p> </important> <p>When you create a security group, you specify a friendly name of your choice. You can have a security group for use in EC2-Classic with the same name as a security group for use in a VPC. However, you can't have two security groups for use in EC2-Classic with the same name or two security groups for use in a VPC with the same name.</p> <p>You have a default security group for use in EC2-Classic and a default security group for use in your VPC. If you don't specify a security group when you launch an instance, the instance is launched into the appropriate default security group. A default security group includes a default rule that grants instances unrestricted network access to each other.</p> <p>You can add or remove rules from your security groups using <a>AuthorizeSecurityGroupIngress</a>, <a>AuthorizeSecurityGroupEgress</a>, <a>RevokeSecurityGroupIngress</a>, and <a>RevokeSecurityGroupEgress</a>.</p>
+    fn create_security_group(
+        &self,
+        input: CreateSecurityGroupRequest,
+    ) -> RusotoFuture<CreateSecurityGroupResult, CreateSecurityGroupError> {
+        Ec2::create_security_group(&(**self), input)
+    }
+
+    /// <p>Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use snapshots for backups, to make copies of EBS volumes, and to save data before shutting down an instance.</p> <p>When a snapshot is created, any AWS Marketplace product codes that are associated with the source volume are propagated to the snapshot.</p> <p>You can take a snapshot of an attached volume that is in use. However, snapshots only capture data that has been written to your EBS volume at the time the snapshot command is issued; this may exclude any data that has been cached by any applications or the operating system. If you can pause any file systems on the volume long enough to take a snapshot, your snapshot should be complete. However, if you cannot pause all file writes to the volume, you should unmount the volume from within the instance, issue the snapshot command, and then remount the volume to ensure a consistent and complete snapshot. You may remount and use your volume while the snapshot status is <code>pending</code>.</p> <p>To create a snapshot for EBS volumes that serve as root devices, you should stop the instance before taking the snapshot.</p> <p>Snapshots that are taken from encrypted volumes are automatically encrypted. Volumes that are created from encrypted snapshots are also automatically encrypted. Your encrypted volumes and any associated snapshots always remain protected.</p> <p>You can tag your snapshots during creation. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html">Amazon Elastic Block Store</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn create_snapshot(
+        &self,
+        input: CreateSnapshotRequest,
+    ) -> RusotoFuture<Snapshot, CreateSnapshotError> {
+        Ec2::create_snapshot(&(**self), input)
+    }
+
+    /// <p>Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per AWS account. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html">Spot Instance Data Feed</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
+    fn create_spot_datafeed_subscription(
+        &self,
+        input: CreateSpotDatafeedSubscriptionRequest,
+    ) -> RusotoFuture<CreateSpotDatafeedSubscriptionResult, CreateSpotDatafeedSubscriptionError>
+    {
+        Ec2::create_spot_datafeed_subscription(&(**self), input)
+    }
+
+    /// <p>Creates a subnet in an existing VPC.</p> <p>When you create each subnet, you provide the VPC ID and the IPv4 CIDR block you want for the subnet. After you create a subnet, you can't change its CIDR block. The size of the subnet's IPv4 CIDR block can be the same as a VPC's IPv4 CIDR block, or a subset of a VPC's IPv4 CIDR block. If you create more than one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest IPv4 subnet (and VPC) you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses).</p> <p>If you've associated an IPv6 CIDR block with your VPC, you can create a subnet with an IPv6 CIDR block that uses a /64 prefix length. </p> <important> <p>AWS reserves both the first four and the last IPv4 address in each subnet's CIDR block. They're not available for use.</p> </important> <p>If you add more than one subnet to a VPC, they're set up in a star topology with a logical router in the middle.</p> <p>If you launch an instance in a VPC using an Amazon EBS-backed AMI, the IP address doesn't change if you stop and restart the instance (unlike a similar instance launched outside a VPC, which gets a new IP address when restarted). It's therefore possible to have a subnet with no running instances (they're all stopped), but no remaining IP addresses available.</p> <p>For more information about subnets, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_subnet(
+        &self,
+        input: CreateSubnetRequest,
+    ) -> RusotoFuture<CreateSubnetResult, CreateSubnetError> {
+        Ec2::create_subnet(&(**self), input)
+    }
+
+    /// <p>Adds or overwrites one or more tags for the specified Amazon EC2 resource or resources. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.</p> <p>For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more information about creating IAM policies that control users' access to resources based on tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html">Supported Resource-Level Permissions for Amazon EC2 API Actions</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn create_tags(&self, input: CreateTagsRequest) -> RusotoFuture<(), CreateTagsError> {
+        Ec2::create_tags(&(**self), input)
+    }
+
+    /// <p>Creates an EBS volume that can be attached to an instance in the same Availability Zone. The volume is created in the regional endpoint that you send the HTTP request to. For more information see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p> <p>You can create a new empty volume or restore a volume from an EBS snapshot. Any AWS Marketplace product codes from the snapshot are propagated to the volume.</p> <p>You can create encrypted volumes with the <code>Encrypted</code> parameter. Encrypted volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are also automatically encrypted. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>You can tag your volumes during creation. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html">Creating an Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn create_volume(&self, input: CreateVolumeRequest) -> RusotoFuture<Volume, CreateVolumeError> {
+        Ec2::create_volume(&(**self), input)
+    }
+
+    /// <p>Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). To help you decide how big to make your VPC, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p> <p>You can optionally request an Amazon-provided IPv6 CIDR block for the VPC. The IPv6 CIDR block uses a /56 prefix length, and is allocated from Amazon's pool of IPv6 addresses. You cannot choose the IPv6 range for your VPC.</p> <p>By default, each instance you launch in the VPC has the default DHCP options, which includes only a default DNS server that we provide (AmazonProvidedDNS). For more information about DHCP options, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">DHCP Options Sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p> <p>You can specify the instance tenancy value for the VPC when you create it. You can't change this value for the VPC after you create it. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html">Dedicated Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn create_vpc(&self, input: CreateVpcRequest) -> RusotoFuture<CreateVpcResult, CreateVpcError> {
+        Ec2::create_vpc(&(**self), input)
+    }
+
+    /// <p>Creates a VPC endpoint for a specified service. An endpoint enables you to create a private connection between your VPC and the service. The service may be provided by AWS, an AWS Marketplace partner, or another AWS account. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html">VPC Endpoints</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p> <p>A <code>gateway</code> endpoint serves as a target for a route in your route table for traffic destined for the AWS service. You can specify an endpoint policy to attach to the endpoint that will control access to the service from your VPC. You can also specify the VPC route tables that use the endpoint.</p> <p>An <code>interface</code> endpoint is a network interface in your subnet that serves as an endpoint for communicating with the specified service. You can specify the subnets in which to create an endpoint, and the security groups to associate with the endpoint network interface.</p> <p>Use <a>DescribeVpcEndpointServices</a> to get a list of supported services.</p>
+    fn create_vpc_endpoint(
+        &self,
+        input: CreateVpcEndpointRequest,
+    ) -> RusotoFuture<CreateVpcEndpointResult, CreateVpcEndpointError> {
+        Ec2::create_vpc_endpoint(&(**self), input)
+    }
+
+    /// <p>Creates a connection notification for a specified VPC endpoint or VPC endpoint service. A connection notification notifies you of specific endpoint events. You must create an SNS topic to receive notifications. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Create a Topic</a> in the <i>Amazon Simple Notification Service Developer Guide</i>.</p> <p>You can create a connection notification for interface endpoints only.</p>
+    fn create_vpc_endpoint_connection_notification(
+        &self,
+        input: CreateVpcEndpointConnectionNotificationRequest,
+    ) -> RusotoFuture<
+        CreateVpcEndpointConnectionNotificationResult,
+        CreateVpcEndpointConnectionNotificationError,
+    > {
+        Ec2::create_vpc_endpoint_connection_notification(&(**self), input)
+    }
+
+    /// <p>Creates a VPC endpoint service configuration to which service consumers (AWS accounts, IAM users, and IAM roles) can connect. Service consumers can create an interface VPC endpoint to connect to your service.</p> <p>To create an endpoint service configuration, you must first create a Network Load Balancer for your service. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html">VPC Endpoint Services</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. </p>
+    fn create_vpc_endpoint_service_configuration(
+        &self,
+        input: CreateVpcEndpointServiceConfigurationRequest,
+    ) -> RusotoFuture<
+        CreateVpcEndpointServiceConfigurationResult,
+        CreateVpcEndpointServiceConfigurationError,
+    > {
+        Ec2::create_vpc_endpoint_service_configuration(&(**self), input)
+    }
+
+    /// <p>Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection. The accepter VPC can belong to another AWS account and can be in a different region to the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.</p> <note> <p>Limitations and rules apply to a VPC peering connection. For more information, see the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-basics.html#vpc-peering-limitations">limitations</a> section in the <i>VPC Peering Guide</i>.</p> </note> <p>The owner of the accepter VPC must accept the peering request to activate the peering connection. The VPC peering connection request expires after 7 days, after which it cannot be accepted or rejected.</p> <p>If you create a VPC peering connection request between VPCs with overlapping CIDR blocks, the VPC peering connection has a status of <code>failed</code>.</p>
+    fn create_vpc_peering_connection(
+        &self,
+        input: CreateVpcPeeringConnectionRequest,
+    ) -> RusotoFuture<CreateVpcPeeringConnectionResult, CreateVpcPeeringConnectionError> {
+        Ec2::create_vpc_peering_connection(&(**self), input)
+    }
+
+    /// <p>Creates a VPN connection between an existing virtual private gateway and a VPN customer gateway. The only supported connection type is <code>ipsec.1</code>.</p> <p>The response includes information that you need to give to your network administrator to configure your customer gateway.</p> <important> <p>We strongly recommend that you use HTTPS when calling this operation because the response contains sensitive cryptographic information for configuring your customer gateway.</p> </important> <p>If you decide to shut down your VPN connection for any reason and later create a new VPN connection, you must reconfigure your customer gateway with the new information returned from this call.</p> <p>This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">AWS Managed VPN Connections</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_vpn_connection(
+        &self,
+        input: CreateVpnConnectionRequest,
+    ) -> RusotoFuture<CreateVpnConnectionResult, CreateVpnConnectionError> {
+        Ec2::create_vpn_connection(&(**self), input)
+    }
+
+    /// <p>Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.</p> <p>For more information about VPN connections, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">AWS Managed VPN Connections</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_vpn_connection_route(
+        &self,
+        input: CreateVpnConnectionRouteRequest,
+    ) -> RusotoFuture<(), CreateVpnConnectionRouteError> {
+        Ec2::create_vpn_connection_route(&(**self), input)
+    }
+
+    /// <p>Creates a virtual private gateway. A virtual private gateway is the endpoint on the VPC side of your VPN connection. You can create a virtual private gateway before creating the VPC itself.</p> <p>For more information about virtual private gateways, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">AWS Managed VPN Connections</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn create_vpn_gateway(
+        &self,
+        input: CreateVpnGatewayRequest,
+    ) -> RusotoFuture<CreateVpnGatewayResult, CreateVpnGatewayError> {
+        Ec2::create_vpn_gateway(&(**self), input)
+    }
+
+    /// <p>Deletes the specified customer gateway. You must delete the VPN connection before you can delete the customer gateway.</p>
+    fn delete_customer_gateway(
+        &self,
+        input: DeleteCustomerGatewayRequest,
+    ) -> RusotoFuture<(), DeleteCustomerGatewayError> {
+        Ec2::delete_customer_gateway(&(**self), input)
+    }
+
+    /// <p>Deletes the specified set of DHCP options. You must disassociate the set of DHCP options before you can delete it. You can disassociate the set of DHCP options by associating either a new set of options or the default set of options with the VPC.</p>
+    fn delete_dhcp_options(
+        &self,
+        input: DeleteDhcpOptionsRequest,
+    ) -> RusotoFuture<(), DeleteDhcpOptionsError> {
+        Ec2::delete_dhcp_options(&(**self), input)
+    }
+
+    /// <p>Deletes an egress-only Internet gateway.</p>
+    fn delete_egress_only_internet_gateway(
+        &self,
+        input: DeleteEgressOnlyInternetGatewayRequest,
+    ) -> RusotoFuture<DeleteEgressOnlyInternetGatewayResult, DeleteEgressOnlyInternetGatewayError>
+    {
+        Ec2::delete_egress_only_internet_gateway(&(**self), input)
+    }
+
+    /// <p>Deletes the specified EC2 Fleet.</p> <p>After you delete an EC2 Fleet, it launches no new instances. You must specify whether an EC2 Fleet should also terminate its instances. If you terminate the instances, the EC2 Fleet enters the <code>deleted_terminating</code> state. Otherwise, the EC2 Fleet enters the <code>deleted_running</code> state, and the instances continue to run until they are interrupted or you terminate them manually. </p>
+    fn delete_fleets(
+        &self,
+        input: DeleteFleetsRequest,
+    ) -> RusotoFuture<DeleteFleetsResult, DeleteFleetsError> {
+        Ec2::delete_fleets(&(**self), input)
+    }
+
+    /// <p>Deletes one or more flow logs.</p>
+    fn delete_flow_logs(
+        &self,
+        input: DeleteFlowLogsRequest,
+    ) -> RusotoFuture<DeleteFlowLogsResult, DeleteFlowLogsError> {
+        Ec2::delete_flow_logs(&(**self), input)
+    }
+
+    /// <p>Deletes the specified Amazon FPGA Image (AFI).</p>
+    fn delete_fpga_image(
+        &self,
+        input: DeleteFpgaImageRequest,
+    ) -> RusotoFuture<DeleteFpgaImageResult, DeleteFpgaImageError> {
+        Ec2::delete_fpga_image(&(**self), input)
+    }
+
+    /// <p>Deletes the specified Internet gateway. You must detach the Internet gateway from the VPC before you can delete it.</p>
+    fn delete_internet_gateway(
+        &self,
+        input: DeleteInternetGatewayRequest,
+    ) -> RusotoFuture<(), DeleteInternetGatewayError> {
+        Ec2::delete_internet_gateway(&(**self), input)
+    }
+
+    /// <p>Deletes the specified key pair, by removing the public key from Amazon EC2.</p>
+    fn delete_key_pair(&self, input: DeleteKeyPairRequest) -> RusotoFuture<(), DeleteKeyPairError> {
+        Ec2::delete_key_pair(&(**self), input)
+    }
+
+    /// <p>Deletes a launch template. Deleting a launch template deletes all of its versions.</p>
+    fn delete_launch_template(
+        &self,
+        input: DeleteLaunchTemplateRequest,
+    ) -> RusotoFuture<DeleteLaunchTemplateResult, DeleteLaunchTemplateError> {
+        Ec2::delete_launch_template(&(**self), input)
+    }
+
+    /// <p>Deletes one or more versions of a launch template. You cannot delete the default version of a launch template; you must first assign a different version as the default. If the default version is the only version for the launch template, you must delete the entire launch template using <a>DeleteLaunchTemplate</a>.</p>
+    fn delete_launch_template_versions(
+        &self,
+        input: DeleteLaunchTemplateVersionsRequest,
+    ) -> RusotoFuture<DeleteLaunchTemplateVersionsResult, DeleteLaunchTemplateVersionsError> {
+        Ec2::delete_launch_template_versions(&(**self), input)
+    }
+
+    /// <p>Deletes the specified NAT gateway. Deleting a NAT gateway disassociates its Elastic IP address, but does not release the address from your account. Deleting a NAT gateway does not delete any NAT gateway routes in your route tables.</p>
+    fn delete_nat_gateway(
+        &self,
+        input: DeleteNatGatewayRequest,
+    ) -> RusotoFuture<DeleteNatGatewayResult, DeleteNatGatewayError> {
+        Ec2::delete_nat_gateway(&(**self), input)
+    }
+
+    /// <p>Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.</p>
+    fn delete_network_acl(
+        &self,
+        input: DeleteNetworkAclRequest,
+    ) -> RusotoFuture<(), DeleteNetworkAclError> {
+        Ec2::delete_network_acl(&(**self), input)
+    }
+
+    /// <p>Deletes the specified ingress or egress entry (rule) from the specified network ACL.</p>
+    fn delete_network_acl_entry(
+        &self,
+        input: DeleteNetworkAclEntryRequest,
+    ) -> RusotoFuture<(), DeleteNetworkAclEntryError> {
+        Ec2::delete_network_acl_entry(&(**self), input)
+    }
+
+    /// <p>Deletes the specified network interface. You must detach the network interface before you can delete it.</p>
+    fn delete_network_interface(
+        &self,
+        input: DeleteNetworkInterfaceRequest,
+    ) -> RusotoFuture<(), DeleteNetworkInterfaceError> {
+        Ec2::delete_network_interface(&(**self), input)
+    }
+
+    /// <p>Deletes a permission for a network interface. By default, you cannot delete the permission if the account for which you're removing the permission has attached the network interface to an instance. However, you can force delete the permission, regardless of any attachment.</p>
+    fn delete_network_interface_permission(
+        &self,
+        input: DeleteNetworkInterfacePermissionRequest,
+    ) -> RusotoFuture<DeleteNetworkInterfacePermissionResult, DeleteNetworkInterfacePermissionError>
+    {
+        Ec2::delete_network_interface_permission(&(**self), input)
+    }
+
+    /// <p>Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn delete_placement_group(
+        &self,
+        input: DeletePlacementGroupRequest,
+    ) -> RusotoFuture<(), DeletePlacementGroupError> {
+        Ec2::delete_placement_group(&(**self), input)
+    }
+
+    /// <p>Deletes the specified route from the specified route table.</p>
+    fn delete_route(&self, input: DeleteRouteRequest) -> RusotoFuture<(), DeleteRouteError> {
+        Ec2::delete_route(&(**self), input)
+    }
+
+    /// <p>Deletes the specified route table. You must disassociate the route table from any subnets before you can delete it. You can't delete the main route table.</p>
+    fn delete_route_table(
+        &self,
+        input: DeleteRouteTableRequest,
+    ) -> RusotoFuture<(), DeleteRouteTableError> {
+        Ec2::delete_route_table(&(**self), input)
+    }
+
+    /// <p>Deletes a security group.</p> <p>If you attempt to delete a security group that is associated with an instance, or is referenced by another security group, the operation fails with <code>InvalidGroup.InUse</code> in EC2-Classic or <code>DependencyViolation</code> in EC2-VPC.</p>
+    fn delete_security_group(
+        &self,
+        input: DeleteSecurityGroupRequest,
+    ) -> RusotoFuture<(), DeleteSecurityGroupError> {
+        Ec2::delete_security_group(&(**self), input)
+    }
+
+    /// <p>Deletes the specified snapshot.</p> <p>When you make periodic snapshots of a volume, the snapshots are incremental, and only the blocks on the device that have changed since your last snapshot are saved in the new snapshot. When you delete a snapshot, only the data not needed for any other snapshot is removed. So regardless of which prior snapshots have been deleted, all active snapshots will have access to all the information needed to restore the volume.</p> <p>You cannot delete a snapshot of the root device of an EBS volume used by a registered AMI. You must first de-register the AMI before you can delete the snapshot.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html">Deleting an Amazon EBS Snapshot</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn delete_snapshot(
+        &self,
+        input: DeleteSnapshotRequest,
+    ) -> RusotoFuture<(), DeleteSnapshotError> {
+        Ec2::delete_snapshot(&(**self), input)
+    }
+
+    /// <p>Deletes the data feed for Spot Instances.</p>
+    fn delete_spot_datafeed_subscription(
+        &self,
+        input: DeleteSpotDatafeedSubscriptionRequest,
+    ) -> RusotoFuture<(), DeleteSpotDatafeedSubscriptionError> {
+        Ec2::delete_spot_datafeed_subscription(&(**self), input)
+    }
+
+    /// <p>Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.</p>
+    fn delete_subnet(&self, input: DeleteSubnetRequest) -> RusotoFuture<(), DeleteSubnetError> {
+        Ec2::delete_subnet(&(**self), input)
+    }
+
+    /// <p>Deletes the specified set of tags from the specified set of resources.</p> <p>To list the current tags, use <a>DescribeTags</a>. For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn delete_tags(&self, input: DeleteTagsRequest) -> RusotoFuture<(), DeleteTagsError> {
+        Ec2::delete_tags(&(**self), input)
+    }
+
+    /// <p>Deletes the specified EBS volume. The volume must be in the <code>available</code> state (not attached to an instance).</p> <p>The volume can remain in the <code>deleting</code> state for several minutes.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html">Deleting an Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn delete_volume(&self, input: DeleteVolumeRequest) -> RusotoFuture<(), DeleteVolumeError> {
+        Ec2::delete_volume(&(**self), input)
+    }
+
+    /// <p>Deletes the specified VPC. You must detach or delete all gateways and resources that are associated with the VPC before you can delete it. For example, you must terminate all instances running in the VPC, delete all security groups associated with the VPC (except the default one), delete all route tables associated with the VPC (except the default one), and so on.</p>
+    fn delete_vpc(&self, input: DeleteVpcRequest) -> RusotoFuture<(), DeleteVpcError> {
+        Ec2::delete_vpc(&(**self), input)
+    }
+
+    /// <p>Deletes one or more VPC endpoint connection notifications.</p>
+    fn delete_vpc_endpoint_connection_notifications(
+        &self,
+        input: DeleteVpcEndpointConnectionNotificationsRequest,
+    ) -> RusotoFuture<
+        DeleteVpcEndpointConnectionNotificationsResult,
+        DeleteVpcEndpointConnectionNotificationsError,
+    > {
+        Ec2::delete_vpc_endpoint_connection_notifications(&(**self), input)
+    }
+
+    /// <p>Deletes one or more VPC endpoint service configurations in your account. Before you delete the endpoint service configuration, you must reject any <code>Available</code> or <code>PendingAcceptance</code> interface endpoint connections that are attached to the service.</p>
+    fn delete_vpc_endpoint_service_configurations(
+        &self,
+        input: DeleteVpcEndpointServiceConfigurationsRequest,
+    ) -> RusotoFuture<
+        DeleteVpcEndpointServiceConfigurationsResult,
+        DeleteVpcEndpointServiceConfigurationsError,
+    > {
+        Ec2::delete_vpc_endpoint_service_configurations(&(**self), input)
+    }
+
+    /// <p>Deletes one or more specified VPC endpoints. Deleting a gateway endpoint also deletes the endpoint routes in the route tables that were associated with the endpoint. Deleting an interface endpoint deletes the endpoint network interfaces.</p>
+    fn delete_vpc_endpoints(
+        &self,
+        input: DeleteVpcEndpointsRequest,
+    ) -> RusotoFuture<DeleteVpcEndpointsResult, DeleteVpcEndpointsError> {
+        Ec2::delete_vpc_endpoints(&(**self), input)
+    }
+
+    /// <p>Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the accepter VPC can delete the VPC peering connection if it's in the <code>active</code> state. The owner of the requester VPC can delete a VPC peering connection in the <code>pending-acceptance</code> state. You cannot delete a VPC peering connection that's in the <code>failed</code> state.</p>
+    fn delete_vpc_peering_connection(
+        &self,
+        input: DeleteVpcPeeringConnectionRequest,
+    ) -> RusotoFuture<DeleteVpcPeeringConnectionResult, DeleteVpcPeeringConnectionError> {
+        Ec2::delete_vpc_peering_connection(&(**self), input)
+    }
+
+    /// <p>Deletes the specified VPN connection.</p> <p>If you're deleting the VPC and its associated components, we recommend that you detach the virtual private gateway from the VPC and delete the VPC before deleting the VPN connection. If you believe that the tunnel credentials for your VPN connection have been compromised, you can delete the VPN connection and create a new one that has new keys, without needing to delete the VPC or virtual private gateway. If you create a new VPN connection, you must reconfigure the customer gateway using the new configuration information returned with the new VPN connection ID.</p>
+    fn delete_vpn_connection(
+        &self,
+        input: DeleteVpnConnectionRequest,
+    ) -> RusotoFuture<(), DeleteVpnConnectionError> {
+        Ec2::delete_vpn_connection(&(**self), input)
+    }
+
+    /// <p>Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.</p>
+    fn delete_vpn_connection_route(
+        &self,
+        input: DeleteVpnConnectionRouteRequest,
+    ) -> RusotoFuture<(), DeleteVpnConnectionRouteError> {
+        Ec2::delete_vpn_connection_route(&(**self), input)
+    }
+
+    /// <p>Deletes the specified virtual private gateway. We recommend that before you delete a virtual private gateway, you detach it from the VPC and delete the VPN connection. Note that you don't need to delete the virtual private gateway if you plan to delete and recreate the VPN connection between your VPC and your network.</p>
+    fn delete_vpn_gateway(
+        &self,
+        input: DeleteVpnGatewayRequest,
+    ) -> RusotoFuture<(), DeleteVpnGatewayError> {
+        Ec2::delete_vpn_gateway(&(**self), input)
+    }
+
+    /// <p>Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new instances; however, it doesn't affect any instances that you've already launched from the AMI. You'll continue to incur usage costs for those instances until you terminate them.</p> <p>When you deregister an Amazon EBS-backed AMI, it doesn't affect the snapshot that was created for the root volume of the instance during the AMI creation process. When you deregister an instance store-backed AMI, it doesn't affect the files that you uploaded to Amazon S3 when you created the AMI.</p>
+    fn deregister_image(
+        &self,
+        input: DeregisterImageRequest,
+    ) -> RusotoFuture<(), DeregisterImageError> {
+        Ec2::deregister_image(&(**self), input)
+    }
+
+    /// <p><p>Describes attributes of your AWS account. The following are the supported account attributes:</p> <ul> <li> <p> <code>supported-platforms</code>: Indicates whether your account can launch instances into EC2-Classic and EC2-VPC, or only into EC2-VPC.</p> </li> <li> <p> <code>default-vpc</code>: The ID of the default VPC for your account, or <code>none</code>.</p> </li> <li> <p> <code>max-instances</code>: The maximum number of On-Demand Instances that you can run.</p> </li> <li> <p> <code>vpc-max-security-groups-per-interface</code>: The maximum number of security groups that you can assign to a network interface.</p> </li> <li> <p> <code>max-elastic-ips</code>: The maximum number of Elastic IP addresses that you can allocate for use with EC2-Classic. </p> </li> <li> <p> <code>vpc-max-elastic-ips</code>: The maximum number of Elastic IP addresses that you can allocate for use with EC2-VPC.</p> </li> </ul></p>
+    fn describe_account_attributes(
+        &self,
+        input: DescribeAccountAttributesRequest,
+    ) -> RusotoFuture<DescribeAccountAttributesResult, DescribeAccountAttributesError> {
+        Ec2::describe_account_attributes(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your Elastic IP addresses.</p> <p>An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_addresses(
+        &self,
+        input: DescribeAddressesRequest,
+    ) -> RusotoFuture<DescribeAddressesResult, DescribeAddressesError> {
+        Ec2::describe_addresses(&(**self), input)
+    }
+
+    /// <p>Describes the longer ID format settings for all resource types in a specific region. This request is useful for performing a quick audit to determine whether a specific region is fully opted in for longer IDs (17-character IDs).</p> <p>This request only returns information about resource types that support longer IDs.</p> <p>The following resource types support longer IDs: <code>bundle</code> | <code>conversion-task</code> | <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> | <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> | <code>import-task</code> | <code>instance</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code> | <code>prefix-list</code> | <code>reservation</code> | <code>route-table</code> | <code>route-table-association</code> | <code>security-group</code> | <code>snapshot</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>volume</code> | <code>vpc</code> | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>.</p>
+    fn describe_aggregate_id_format(
+        &self,
+        input: DescribeAggregateIdFormatRequest,
+    ) -> RusotoFuture<DescribeAggregateIdFormatResult, DescribeAggregateIdFormatError> {
+        Ec2::describe_aggregate_id_format(&(**self), input)
+    }
+
+    /// <p>Describes one or more of the Availability Zones that are available to you. The results include zones only for the region you're currently using. If there is an event impacting an Availability Zone, you can use this request to view the state and any provided message for that Availability Zone.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">Regions and Availability Zones</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_availability_zones(
+        &self,
+        input: DescribeAvailabilityZonesRequest,
+    ) -> RusotoFuture<DescribeAvailabilityZonesResult, DescribeAvailabilityZonesError> {
+        Ec2::describe_availability_zones(&(**self), input)
+    }
+
+    /// <p><p>Describes one or more of your bundling tasks.</p> <note> <p>Completed bundle tasks are listed for only a limited time. If your bundle task is no longer in the list, you can still register an AMI from it. Just use <code>RegisterImage</code> with the Amazon S3 bucket name and image manifest name you provided to the bundle task.</p> </note></p>
+    fn describe_bundle_tasks(
+        &self,
+        input: DescribeBundleTasksRequest,
+    ) -> RusotoFuture<DescribeBundleTasksResult, DescribeBundleTasksError> {
+        Ec2::describe_bundle_tasks(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your linked EC2-Classic instances. This request only returns information about EC2-Classic instances linked to a VPC through ClassicLink; you cannot use this request to return information about other instances.</p>
+    fn describe_classic_link_instances(
+        &self,
+        input: DescribeClassicLinkInstancesRequest,
+    ) -> RusotoFuture<DescribeClassicLinkInstancesResult, DescribeClassicLinkInstancesError> {
+        Ec2::describe_classic_link_instances(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your conversion tasks. For more information, see the <a href="http://docs.aws.amazon.com/vm-import/latest/userguide/">VM Import/Export User Guide</a>.</p> <p>For information about the import manifest referenced by this API action, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html">VM Import Manifest</a>.</p>
+    fn describe_conversion_tasks(
+        &self,
+        input: DescribeConversionTasksRequest,
+    ) -> RusotoFuture<DescribeConversionTasksResult, DescribeConversionTasksError> {
+        Ec2::describe_conversion_tasks(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your VPN customer gateways.</p> <p>For more information about VPN customer gateways, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">AWS Managed VPN Connections</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn describe_customer_gateways(
+        &self,
+        input: DescribeCustomerGatewaysRequest,
+    ) -> RusotoFuture<DescribeCustomerGatewaysResult, DescribeCustomerGatewaysError> {
+        Ec2::describe_customer_gateways(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your DHCP options sets.</p> <p>For more information about DHCP options sets, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">DHCP Options Sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn describe_dhcp_options(
+        &self,
+        input: DescribeDhcpOptionsRequest,
+    ) -> RusotoFuture<DescribeDhcpOptionsResult, DescribeDhcpOptionsError> {
+        Ec2::describe_dhcp_options(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your egress-only Internet gateways.</p>
+    fn describe_egress_only_internet_gateways(
+        &self,
+        input: DescribeEgressOnlyInternetGatewaysRequest,
+    ) -> RusotoFuture<
+        DescribeEgressOnlyInternetGatewaysResult,
+        DescribeEgressOnlyInternetGatewaysError,
+    > {
+        Ec2::describe_egress_only_internet_gateways(&(**self), input)
+    }
+
+    /// <p>Describes the Elastic GPUs associated with your instances. For more information about Elastic GPUs, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-gpus.html">Amazon EC2 Elastic GPUs</a>.</p>
+    fn describe_elastic_gpus(
+        &self,
+        input: DescribeElasticGpusRequest,
+    ) -> RusotoFuture<DescribeElasticGpusResult, DescribeElasticGpusError> {
+        Ec2::describe_elastic_gpus(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your export tasks.</p>
+    fn describe_export_tasks(
+        &self,
+        input: DescribeExportTasksRequest,
+    ) -> RusotoFuture<DescribeExportTasksResult, DescribeExportTasksError> {
+        Ec2::describe_export_tasks(&(**self), input)
+    }
+
+    /// <p>Describes the events for the specified EC2 Fleet during the specified time.</p>
+    fn describe_fleet_history(
+        &self,
+        input: DescribeFleetHistoryRequest,
+    ) -> RusotoFuture<DescribeFleetHistoryResult, DescribeFleetHistoryError> {
+        Ec2::describe_fleet_history(&(**self), input)
+    }
+
+    /// <p>Describes the running instances for the specified EC2 Fleet.</p>
+    fn describe_fleet_instances(
+        &self,
+        input: DescribeFleetInstancesRequest,
+    ) -> RusotoFuture<DescribeFleetInstancesResult, DescribeFleetInstancesError> {
+        Ec2::describe_fleet_instances(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your EC2 Fleet.</p>
+    fn describe_fleets(
+        &self,
+        input: DescribeFleetsRequest,
+    ) -> RusotoFuture<DescribeFleetsResult, DescribeFleetsError> {
+        Ec2::describe_fleets(&(**self), input)
+    }
+
+    /// <p>Describes one or more flow logs. To view the information in your flow logs (the log streams for the network interfaces), you must use the CloudWatch Logs console or the CloudWatch Logs API.</p>
+    fn describe_flow_logs(
+        &self,
+        input: DescribeFlowLogsRequest,
+    ) -> RusotoFuture<DescribeFlowLogsResult, DescribeFlowLogsError> {
+        Ec2::describe_flow_logs(&(**self), input)
+    }
+
+    /// <p>Describes the specified attribute of the specified Amazon FPGA Image (AFI).</p>
+    fn describe_fpga_image_attribute(
+        &self,
+        input: DescribeFpgaImageAttributeRequest,
+    ) -> RusotoFuture<DescribeFpgaImageAttributeResult, DescribeFpgaImageAttributeError> {
+        Ec2::describe_fpga_image_attribute(&(**self), input)
+    }
+
+    /// <p>Describes one or more available Amazon FPGA Images (AFIs). These include public AFIs, private AFIs that you own, and AFIs owned by other AWS accounts for which you have load permissions.</p>
+    fn describe_fpga_images(
+        &self,
+        input: DescribeFpgaImagesRequest,
+    ) -> RusotoFuture<DescribeFpgaImagesResult, DescribeFpgaImagesError> {
+        Ec2::describe_fpga_images(&(**self), input)
+    }
+
+    /// <p>Describes the Dedicated Host reservations that are available to purchase.</p> <p>The results describe all the Dedicated Host reservation offerings, including offerings that may not match the instance family and region of your Dedicated Hosts. When purchasing an offering, ensure that the instance family and Region of the offering matches that of the Dedicated Hosts with which it is to be associated . For more information about supported instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html">Dedicated Hosts Overview</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. </p>
+    fn describe_host_reservation_offerings(
+        &self,
+        input: DescribeHostReservationOfferingsRequest,
+    ) -> RusotoFuture<DescribeHostReservationOfferingsResult, DescribeHostReservationOfferingsError>
+    {
+        Ec2::describe_host_reservation_offerings(&(**self), input)
+    }
+
+    /// <p>Describes reservations that are associated with Dedicated Hosts in your account.</p>
+    fn describe_host_reservations(
+        &self,
+        input: DescribeHostReservationsRequest,
+    ) -> RusotoFuture<DescribeHostReservationsResult, DescribeHostReservationsError> {
+        Ec2::describe_host_reservations(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your Dedicated Hosts.</p> <p>The results describe only the Dedicated Hosts in the region you're currently using. All listed instances consume capacity on your Dedicated Host. Dedicated Hosts that have recently been released are listed with the state <code>released</code>.</p>
+    fn describe_hosts(
+        &self,
+        input: DescribeHostsRequest,
+    ) -> RusotoFuture<DescribeHostsResult, DescribeHostsError> {
+        Ec2::describe_hosts(&(**self), input)
+    }
+
+    /// <p>Describes your IAM instance profile associations.</p>
+    fn describe_iam_instance_profile_associations(
+        &self,
+        input: DescribeIamInstanceProfileAssociationsRequest,
+    ) -> RusotoFuture<
+        DescribeIamInstanceProfileAssociationsResult,
+        DescribeIamInstanceProfileAssociationsError,
+    > {
+        Ec2::describe_iam_instance_profile_associations(&(**self), input)
+    }
+
+    /// <p>Describes the ID format settings for your resources on a per-region basis, for example, to view which resource types are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types.</p> <p>The following resource types support longer IDs: <code>bundle</code> | <code>conversion-task</code> | <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> | <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> | <code>import-task</code> | <code>instance</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code> | <code>prefix-list</code> | <code>reservation</code> | <code>route-table</code> | <code>route-table-association</code> | <code>security-group</code> | <code>snapshot</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>volume</code> | <code>vpc</code> | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>. </p> <p>These settings apply to the IAM user who makes the request; they do not apply to the entire AWS account. By default, an IAM user defaults to the same settings as the root user, unless they explicitly override the settings by running the <a>ModifyIdFormat</a> command. Resources created with longer IDs are visible to all IAM users, regardless of these settings and provided that they have permission to use the relevant <code>Describe</code> command for the resource type.</p>
+    fn describe_id_format(
+        &self,
+        input: DescribeIdFormatRequest,
+    ) -> RusotoFuture<DescribeIdFormatResult, DescribeIdFormatError> {
+        Ec2::describe_id_format(&(**self), input)
+    }
+
+    /// <p>Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html">Resource IDs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. </p> <p>The following resource types support longer IDs: <code>bundle</code> | <code>conversion-task</code> | <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> | <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> | <code>import-task</code> | <code>instance</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code> | <code>prefix-list</code> | <code>reservation</code> | <code>route-table</code> | <code>route-table-association</code> | <code>security-group</code> | <code>snapshot</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>volume</code> | <code>vpc</code> | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>. </p> <p>These settings apply to the principal specified in the request. They do not apply to the principal that makes the request.</p>
+    fn describe_identity_id_format(
+        &self,
+        input: DescribeIdentityIdFormatRequest,
+    ) -> RusotoFuture<DescribeIdentityIdFormatResult, DescribeIdentityIdFormatError> {
+        Ec2::describe_identity_id_format(&(**self), input)
+    }
+
+    /// <p>Describes the specified attribute of the specified AMI. You can specify only one attribute at a time.</p>
+    fn describe_image_attribute(
+        &self,
+        input: DescribeImageAttributeRequest,
+    ) -> RusotoFuture<ImageAttribute, DescribeImageAttributeError> {
+        Ec2::describe_image_attribute(&(**self), input)
+    }
+
+    /// <p><p>Describes one or more of the images (AMIs, AKIs, and ARIs) available to you. Images available to you include public images, private images that you own, and private images owned by other AWS accounts but for which you have explicit launch permissions.</p> <note> <p>Deregistered images are included in the returned results for an unspecified interval after deregistration.</p> </note></p>
+    fn describe_images(
+        &self,
+        input: DescribeImagesRequest,
+    ) -> RusotoFuture<DescribeImagesResult, DescribeImagesError> {
+        Ec2::describe_images(&(**self), input)
+    }
+
+    /// <p>Displays details about an import virtual machine or import snapshot tasks that are already created.</p>
+    fn describe_import_image_tasks(
+        &self,
+        input: DescribeImportImageTasksRequest,
+    ) -> RusotoFuture<DescribeImportImageTasksResult, DescribeImportImageTasksError> {
+        Ec2::describe_import_image_tasks(&(**self), input)
+    }
+
+    /// <p>Describes your import snapshot tasks.</p>
+    fn describe_import_snapshot_tasks(
+        &self,
+        input: DescribeImportSnapshotTasksRequest,
+    ) -> RusotoFuture<DescribeImportSnapshotTasksResult, DescribeImportSnapshotTasksError> {
+        Ec2::describe_import_snapshot_tasks(&(**self), input)
+    }
+
+    /// <p>Describes the specified attribute of the specified instance. You can specify only one attribute at a time. Valid attribute values are: <code>instanceType</code> | <code>kernel</code> | <code>ramdisk</code> | <code>userData</code> | <code>disableApiTermination</code> | <code>instanceInitiatedShutdownBehavior</code> | <code>rootDeviceName</code> | <code>blockDeviceMapping</code> | <code>productCodes</code> | <code>sourceDestCheck</code> | <code>groupSet</code> | <code>ebsOptimized</code> | <code>sriovNetSupport</code> </p>
+    fn describe_instance_attribute(
+        &self,
+        input: DescribeInstanceAttributeRequest,
+    ) -> RusotoFuture<InstanceAttribute, DescribeInstanceAttributeError> {
+        Ec2::describe_instance_attribute(&(**self), input)
+    }
+
+    /// <p>Describes the credit option for CPU usage of one or more of your T2 instances. The credit options are <code>standard</code> and <code>unlimited</code>.</p> <p>If you do not specify an instance ID, Amazon EC2 returns only the T2 instances with the <code>unlimited</code> credit option. If you specify one or more instance IDs, Amazon EC2 returns the credit option (<code>standard</code> or <code>unlimited</code>) of those instances. If you specify an instance ID that is not valid, such as an instance that is not a T2 instance, an error is returned.</p> <p>Recently terminated instances might appear in the returned results. This interval is usually less than one hour.</p> <p>If an Availability Zone is experiencing a service disruption and you specify instance IDs in the affected zone, or do not specify any instance IDs at all, the call fails. If you specify only instance IDs in an unaffected zone, the call works normally.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html">T2 Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_instance_credit_specifications(
+        &self,
+        input: DescribeInstanceCreditSpecificationsRequest,
+    ) -> RusotoFuture<
+        DescribeInstanceCreditSpecificationsResult,
+        DescribeInstanceCreditSpecificationsError,
+    > {
+        Ec2::describe_instance_credit_specifications(&(**self), input)
+    }
+
+    /// <p><p>Describes the status of one or more instances. By default, only running instances are described, unless you specifically indicate to return the status of all instances.</p> <p>Instance status includes the following components:</p> <ul> <li> <p> <b>Status checks</b> - Amazon EC2 performs status checks on running EC2 instances to identify hardware and software issues. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html">Status Checks for Your Instances</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html">Troubleshooting Instances with Failed Status Checks</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> </li> <li> <p> <b>Scheduled events</b> - Amazon EC2 can schedule events (such as reboot, stop, or terminate) for your instances related to hardware issues, software updates, or system maintenance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-instances-status-check_sched.html">Scheduled Events for Your Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> </li> <li> <p> <b>Instance state</b> - You can manage your instances from the moment you launch them through their termination. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> </li> </ul></p>
+    fn describe_instance_status(
+        &self,
+        input: DescribeInstanceStatusRequest,
+    ) -> RusotoFuture<DescribeInstanceStatusResult, DescribeInstanceStatusError> {
+        Ec2::describe_instance_status(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your instances.</p> <p>If you specify one or more instance IDs, Amazon EC2 returns information for those instances. If you do not specify instance IDs, Amazon EC2 returns information for all relevant instances. If you specify an instance ID that is not valid, an error is returned. If you specify an instance that you do not own, it is not included in the returned results.</p> <p>Recently terminated instances might appear in the returned results. This interval is usually less than one hour.</p> <p>If you describe instances in the rare case where an Availability Zone is experiencing a service disruption and you specify instance IDs that are in the affected zone, or do not specify any instance IDs at all, the call fails. If you describe instances and specify only instance IDs that are in an unaffected zone, the call works normally.</p>
+    fn describe_instances(
+        &self,
+        input: DescribeInstancesRequest,
+    ) -> RusotoFuture<DescribeInstancesResult, DescribeInstancesError> {
+        Ec2::describe_instances(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your Internet gateways.</p>
+    fn describe_internet_gateways(
+        &self,
+        input: DescribeInternetGatewaysRequest,
+    ) -> RusotoFuture<DescribeInternetGatewaysResult, DescribeInternetGatewaysError> {
+        Ec2::describe_internet_gateways(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your key pairs.</p> <p>For more information about key pairs, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_key_pairs(
+        &self,
+        input: DescribeKeyPairsRequest,
+    ) -> RusotoFuture<DescribeKeyPairsResult, DescribeKeyPairsError> {
+        Ec2::describe_key_pairs(&(**self), input)
+    }
+
+    /// <p>Describes one or more versions of a specified launch template. You can describe all versions, individual versions, or a range of versions.</p>
+    fn describe_launch_template_versions(
+        &self,
+        input: DescribeLaunchTemplateVersionsRequest,
+    ) -> RusotoFuture<DescribeLaunchTemplateVersionsResult, DescribeLaunchTemplateVersionsError>
+    {
+        Ec2::describe_launch_template_versions(&(**self), input)
+    }
+
+    /// <p>Describes one or more launch templates.</p>
+    fn describe_launch_templates(
+        &self,
+        input: DescribeLaunchTemplatesRequest,
+    ) -> RusotoFuture<DescribeLaunchTemplatesResult, DescribeLaunchTemplatesError> {
+        Ec2::describe_launch_templates(&(**self), input)
+    }
+
+    /// <p>Describes your Elastic IP addresses that are being moved to the EC2-VPC platform, or that are being restored to the EC2-Classic platform. This request does not return information about any other Elastic IP addresses in your account.</p>
+    fn describe_moving_addresses(
+        &self,
+        input: DescribeMovingAddressesRequest,
+    ) -> RusotoFuture<DescribeMovingAddressesResult, DescribeMovingAddressesError> {
+        Ec2::describe_moving_addresses(&(**self), input)
+    }
+
+    /// <p>Describes one or more of the your NAT gateways.</p>
+    fn describe_nat_gateways(
+        &self,
+        input: DescribeNatGatewaysRequest,
+    ) -> RusotoFuture<DescribeNatGatewaysResult, DescribeNatGatewaysError> {
+        Ec2::describe_nat_gateways(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your network ACLs.</p> <p>For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn describe_network_acls(
+        &self,
+        input: DescribeNetworkAclsRequest,
+    ) -> RusotoFuture<DescribeNetworkAclsResult, DescribeNetworkAclsError> {
+        Ec2::describe_network_acls(&(**self), input)
+    }
+
+    /// <p>Describes a network interface attribute. You can specify only one attribute at a time.</p>
+    fn describe_network_interface_attribute(
+        &self,
+        input: DescribeNetworkInterfaceAttributeRequest,
+    ) -> RusotoFuture<DescribeNetworkInterfaceAttributeResult, DescribeNetworkInterfaceAttributeError>
+    {
+        Ec2::describe_network_interface_attribute(&(**self), input)
+    }
+
+    /// <p>Describes the permissions for your network interfaces. </p>
+    fn describe_network_interface_permissions(
+        &self,
+        input: DescribeNetworkInterfacePermissionsRequest,
+    ) -> RusotoFuture<
+        DescribeNetworkInterfacePermissionsResult,
+        DescribeNetworkInterfacePermissionsError,
+    > {
+        Ec2::describe_network_interface_permissions(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your network interfaces.</p>
+    fn describe_network_interfaces(
+        &self,
+        input: DescribeNetworkInterfacesRequest,
+    ) -> RusotoFuture<DescribeNetworkInterfacesResult, DescribeNetworkInterfacesError> {
+        Ec2::describe_network_interfaces(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your placement groups. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_placement_groups(
+        &self,
+        input: DescribePlacementGroupsRequest,
+    ) -> RusotoFuture<DescribePlacementGroupsResult, DescribePlacementGroupsError> {
+        Ec2::describe_placement_groups(&(**self), input)
+    }
+
+    /// <p>Describes available AWS services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service. A prefix list ID is required for creating an outbound security group rule that allows traffic from a VPC to access an AWS service through a gateway VPC endpoint. Currently, the services that support this action are Amazon S3 and Amazon DynamoDB.</p>
+    fn describe_prefix_lists(
+        &self,
+        input: DescribePrefixListsRequest,
+    ) -> RusotoFuture<DescribePrefixListsResult, DescribePrefixListsError> {
+        Ec2::describe_prefix_lists(&(**self), input)
+    }
+
+    /// <p>Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference. </p> <p>By default, all IAM roles and IAM users default to the same ID settings as the root user, unless they explicitly override the settings. This request is useful for identifying those IAM users and IAM roles that have overridden the default ID settings.</p> <p>The following resource types support longer IDs: <code>bundle</code> | <code>conversion-task</code> | <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> | <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> | <code>import-task</code> | <code>instance</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code> | <code>prefix-list</code> | <code>reservation</code> | <code>route-table</code> | <code>route-table-association</code> | <code>security-group</code> | <code>snapshot</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>volume</code> | <code>vpc</code> | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>. </p>
+    fn describe_principal_id_format(
+        &self,
+        input: DescribePrincipalIdFormatRequest,
+    ) -> RusotoFuture<DescribePrincipalIdFormatResult, DescribePrincipalIdFormatError> {
+        Ec2::describe_principal_id_format(&(**self), input)
+    }
+
+    /// <p>Describes one or more regions that are currently available to you.</p> <p>For a list of the regions supported by Amazon EC2, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region">Regions and Endpoints</a>.</p>
+    fn describe_regions(
+        &self,
+        input: DescribeRegionsRequest,
+    ) -> RusotoFuture<DescribeRegionsResult, DescribeRegionsError> {
+        Ec2::describe_regions(&(**self), input)
+    }
+
+    /// <p>Describes one or more of the Reserved Instances that you purchased.</p> <p>For more information about Reserved Instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html">Reserved Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_reserved_instances(
+        &self,
+        input: DescribeReservedInstancesRequest,
+    ) -> RusotoFuture<DescribeReservedInstancesResult, DescribeReservedInstancesError> {
+        Ec2::describe_reserved_instances(&(**self), input)
+    }
+
+    /// <p>Describes your account's Reserved Instance listings in the Reserved Instance Marketplace.</p> <p>The Reserved Instance Marketplace matches sellers who want to resell Reserved Instance capacity that they no longer need with buyers who want to purchase additional capacity. Reserved Instances bought and sold through the Reserved Instance Marketplace work like any other Reserved Instances.</p> <p>As a seller, you choose to list some or all of your Reserved Instances, and you specify the upfront price to receive for them. Your Reserved Instances are then listed in the Reserved Instance Marketplace and are available for purchase.</p> <p>As a buyer, you specify the configuration of the Reserved Instance to purchase, and the Marketplace matches what you're searching for with what's available. The Marketplace first sells the lowest priced Reserved Instances to you, and continues to sell available Reserved Instance listings to you until your demand is met. You are charged based on the total price of all of the listings that you purchase.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_reserved_instances_listings(
+        &self,
+        input: DescribeReservedInstancesListingsRequest,
+    ) -> RusotoFuture<DescribeReservedInstancesListingsResult, DescribeReservedInstancesListingsError>
+    {
+        Ec2::describe_reserved_instances_listings(&(**self), input)
+    }
+
+    /// <p>Describes the modifications made to your Reserved Instances. If no parameter is specified, information about all your Reserved Instances modification requests is returned. If a modification ID is specified, only information about the specific modification is returned.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html">Modifying Reserved Instances</a> in the Amazon Elastic Compute Cloud User Guide.</p>
+    fn describe_reserved_instances_modifications(
+        &self,
+        input: DescribeReservedInstancesModificationsRequest,
+    ) -> RusotoFuture<
+        DescribeReservedInstancesModificationsResult,
+        DescribeReservedInstancesModificationsError,
+    > {
+        Ec2::describe_reserved_instances_modifications(&(**self), input)
+    }
+
+    /// <p>Describes Reserved Instance offerings that are available for purchase. With Reserved Instances, you purchase the right to launch instances for a period of time. During that time period, you do not receive insufficient capacity errors, and you pay a lower usage rate than the rate charged for On-Demand instances for the actual time used.</p> <p>If you have listed your own Reserved Instances for sale in the Reserved Instance Marketplace, they will be excluded from these results. This is to ensure that you do not purchase your own Reserved Instances.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_reserved_instances_offerings(
+        &self,
+        input: DescribeReservedInstancesOfferingsRequest,
+    ) -> RusotoFuture<
+        DescribeReservedInstancesOfferingsResult,
+        DescribeReservedInstancesOfferingsError,
+    > {
+        Ec2::describe_reserved_instances_offerings(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your route tables.</p> <p>Each subnet in your VPC must be associated with a route table. If a subnet is not explicitly associated with any route table, it is implicitly associated with the main route table. This command does not return the subnet ID for implicit associations.</p> <p>For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn describe_route_tables(
+        &self,
+        input: DescribeRouteTablesRequest,
+    ) -> RusotoFuture<DescribeRouteTablesResult, DescribeRouteTablesError> {
+        Ec2::describe_route_tables(&(**self), input)
+    }
+
+    /// <p>Finds available schedules that meet the specified criteria.</p> <p>You can search for an available schedule no more than 3 months in advance. You must meet the minimum required duration of 1,200 hours per year. For example, the minimum daily schedule is 4 hours, the minimum weekly schedule is 24 hours, and the minimum monthly schedule is 100 hours.</p> <p>After you find a schedule that meets your needs, call <a>PurchaseScheduledInstances</a> to purchase Scheduled Instances with that schedule.</p>
+    fn describe_scheduled_instance_availability(
+        &self,
+        input: DescribeScheduledInstanceAvailabilityRequest,
+    ) -> RusotoFuture<
+        DescribeScheduledInstanceAvailabilityResult,
+        DescribeScheduledInstanceAvailabilityError,
+    > {
+        Ec2::describe_scheduled_instance_availability(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your Scheduled Instances.</p>
+    fn describe_scheduled_instances(
+        &self,
+        input: DescribeScheduledInstancesRequest,
+    ) -> RusotoFuture<DescribeScheduledInstancesResult, DescribeScheduledInstancesError> {
+        Ec2::describe_scheduled_instances(&(**self), input)
+    }
+
+    /// <p>[EC2-VPC only] Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request.</p>
+    fn describe_security_group_references(
+        &self,
+        input: DescribeSecurityGroupReferencesRequest,
+    ) -> RusotoFuture<DescribeSecurityGroupReferencesResult, DescribeSecurityGroupReferencesError>
+    {
+        Ec2::describe_security_group_references(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your security groups.</p> <p>A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Amazon EC2 Security Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i> and <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn describe_security_groups(
+        &self,
+        input: DescribeSecurityGroupsRequest,
+    ) -> RusotoFuture<DescribeSecurityGroupsResult, DescribeSecurityGroupsError> {
+        Ec2::describe_security_groups(&(**self), input)
+    }
+
+    /// <p>Describes the specified attribute of the specified snapshot. You can specify only one attribute at a time.</p> <p>For more information about EBS snapshots, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html">Amazon EBS Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_snapshot_attribute(
+        &self,
+        input: DescribeSnapshotAttributeRequest,
+    ) -> RusotoFuture<DescribeSnapshotAttributeResult, DescribeSnapshotAttributeError> {
+        Ec2::describe_snapshot_attribute(&(**self), input)
+    }
+
+    /// <p>Describes one or more of the EBS snapshots available to you. Available snapshots include public snapshots available for any AWS account to launch, private snapshots that you own, and private snapshots owned by another AWS account but for which you've been given explicit create volume permissions.</p> <p>The create volume permissions fall into the following categories:</p> <ul> <li> <p> <i>public</i>: The owner of the snapshot granted create volume permissions for the snapshot to the <code>all</code> group. All AWS accounts have create volume permissions for these snapshots.</p> </li> <li> <p> <i>explicit</i>: The owner of the snapshot granted create volume permissions to a specific AWS account.</p> </li> <li> <p> <i>implicit</i>: An AWS account has implicit create volume permissions for all snapshots it owns.</p> </li> </ul> <p>The list of snapshots returned can be modified by specifying snapshot IDs, snapshot owners, or AWS accounts with create volume permissions. If no options are specified, Amazon EC2 returns all snapshots for which you have create volume permissions.</p> <p>If you specify one or more snapshot IDs, only snapshots that have the specified IDs are returned. If you specify an invalid snapshot ID, an error is returned. If you specify a snapshot ID for which you do not have access, it is not included in the returned results.</p> <p>If you specify one or more snapshot owners using the <code>OwnerIds</code> option, only snapshots from the specified owners and for which you have access are returned. The results can include the AWS account IDs of the specified owners, <code>amazon</code> for snapshots owned by Amazon, or <code>self</code> for snapshots that you own.</p> <p>If you specify a list of restorable users, only snapshots with create snapshot permissions for those users are returned. You can specify AWS account IDs (if you own the snapshots), <code>self</code> for snapshots for which you own or have explicit permissions, or <code>all</code> for public snapshots.</p> <p>If you are describing a long list of snapshots, you can paginate the output to make the list more manageable. The <code>MaxResults</code> parameter sets the maximum number of results returned in a single page. If the list of results exceeds your <code>MaxResults</code> value, then that number of results is returned along with a <code>NextToken</code> value that can be passed to a subsequent <code>DescribeSnapshots</code> request to retrieve the remaining results.</p> <p>For more information about EBS snapshots, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html">Amazon EBS Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_snapshots(
+        &self,
+        input: DescribeSnapshotsRequest,
+    ) -> RusotoFuture<DescribeSnapshotsResult, DescribeSnapshotsError> {
+        Ec2::describe_snapshots(&(**self), input)
+    }
+
+    /// <p>Describes the data feed for Spot Instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html">Spot Instance Data Feed</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
+    fn describe_spot_datafeed_subscription(
+        &self,
+        input: DescribeSpotDatafeedSubscriptionRequest,
+    ) -> RusotoFuture<DescribeSpotDatafeedSubscriptionResult, DescribeSpotDatafeedSubscriptionError>
+    {
+        Ec2::describe_spot_datafeed_subscription(&(**self), input)
+    }
+
+    /// <p>Describes the running instances for the specified Spot Fleet.</p>
+    fn describe_spot_fleet_instances(
+        &self,
+        input: DescribeSpotFleetInstancesRequest,
+    ) -> RusotoFuture<DescribeSpotFleetInstancesResponse, DescribeSpotFleetInstancesError> {
+        Ec2::describe_spot_fleet_instances(&(**self), input)
+    }
+
+    /// <p>Describes the events for the specified Spot Fleet request during the specified time.</p> <p>Spot Fleet events are delayed by up to 30 seconds before they can be described. This ensures that you can query by the last evaluated time and not miss a recorded event.</p>
+    fn describe_spot_fleet_request_history(
+        &self,
+        input: DescribeSpotFleetRequestHistoryRequest,
+    ) -> RusotoFuture<DescribeSpotFleetRequestHistoryResponse, DescribeSpotFleetRequestHistoryError>
+    {
+        Ec2::describe_spot_fleet_request_history(&(**self), input)
+    }
+
+    /// <p>Describes your Spot Fleet requests.</p> <p>Spot Fleet requests are deleted 48 hours after they are canceled and their instances are terminated.</p>
+    fn describe_spot_fleet_requests(
+        &self,
+        input: DescribeSpotFleetRequestsRequest,
+    ) -> RusotoFuture<DescribeSpotFleetRequestsResponse, DescribeSpotFleetRequestsError> {
+        Ec2::describe_spot_fleet_requests(&(**self), input)
+    }
+
+    /// <p>Describes the specified Spot Instance requests.</p> <p>You can use <code>DescribeSpotInstanceRequests</code> to find a running Spot Instance by examining the response. If the status of the Spot Instance is <code>fulfilled</code>, the instance ID appears in the response and contains the identifier of the instance. Alternatively, you can use <a>DescribeInstances</a> with a filter to look for instances where the instance lifecycle is <code>spot</code>.</p> <p>Spot Instance requests are deleted four hours after they are canceled and their instances are terminated.</p>
+    fn describe_spot_instance_requests(
+        &self,
+        input: DescribeSpotInstanceRequestsRequest,
+    ) -> RusotoFuture<DescribeSpotInstanceRequestsResult, DescribeSpotInstanceRequestsError> {
+        Ec2::describe_spot_instance_requests(&(**self), input)
+    }
+
+    /// <p>Describes the Spot price history. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html">Spot Instance Pricing History</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p> <p>When you specify a start and end time, this operation returns the prices of the instance types within the time range that you specified and the time when the price changed. The price is valid within the time period that you specified; the response merely indicates the last time that the price changed.</p>
+    fn describe_spot_price_history(
+        &self,
+        input: DescribeSpotPriceHistoryRequest,
+    ) -> RusotoFuture<DescribeSpotPriceHistoryResult, DescribeSpotPriceHistoryError> {
+        Ec2::describe_spot_price_history(&(**self), input)
+    }
+
+    /// <p>[EC2-VPC only] Describes the stale security group rules for security groups in a specified VPC. Rules are stale when they reference a deleted security group in a peer VPC, or a security group in a peer VPC for which the VPC peering connection has been deleted.</p>
+    fn describe_stale_security_groups(
+        &self,
+        input: DescribeStaleSecurityGroupsRequest,
+    ) -> RusotoFuture<DescribeStaleSecurityGroupsResult, DescribeStaleSecurityGroupsError> {
+        Ec2::describe_stale_security_groups(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your subnets.</p> <p>For more information about subnets, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn describe_subnets(
+        &self,
+        input: DescribeSubnetsRequest,
+    ) -> RusotoFuture<DescribeSubnetsResult, DescribeSubnetsError> {
+        Ec2::describe_subnets(&(**self), input)
+    }
+
+    /// <p>Describes one or more of the tags for your EC2 resources.</p> <p>For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_tags(
+        &self,
+        input: DescribeTagsRequest,
+    ) -> RusotoFuture<DescribeTagsResult, DescribeTagsError> {
+        Ec2::describe_tags(&(**self), input)
+    }
+
+    /// <p>Describes the specified attribute of the specified volume. You can specify only one attribute at a time.</p> <p>For more information about EBS volumes, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html">Amazon EBS Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_volume_attribute(
+        &self,
+        input: DescribeVolumeAttributeRequest,
+    ) -> RusotoFuture<DescribeVolumeAttributeResult, DescribeVolumeAttributeError> {
+        Ec2::describe_volume_attribute(&(**self), input)
+    }
+
+    /// <p>Describes the status of the specified volumes. Volume status provides the result of the checks performed on your volumes to determine events that can impair the performance of your volumes. The performance of a volume can be affected if an issue occurs on the volume's underlying host. If the volume's underlying host experiences a power outage or system issue, after the system is restored, there could be data inconsistencies on the volume. Volume events notify you if this occurs. Volume actions notify you if any action needs to be taken in response to the event.</p> <p>The <code>DescribeVolumeStatus</code> operation provides the following information about the specified volumes:</p> <p> <i>Status</i>: Reflects the current status of the volume. The possible values are <code>ok</code>, <code>impaired</code> , <code>warning</code>, or <code>insufficient-data</code>. If all checks pass, the overall status of the volume is <code>ok</code>. If the check fails, the overall status is <code>impaired</code>. If the status is <code>insufficient-data</code>, then the checks may still be taking place on your volume at the time. We recommend that you retry the request. For more information about volume status, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html">Monitoring the Status of Your Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p> <i>Events</i>: Reflect the cause of a volume status and may require you to take action. For example, if your volume returns an <code>impaired</code> status, then the volume event might be <code>potential-data-inconsistency</code>. This means that your volume has been affected by an issue with the underlying host, has all I/O operations disabled, and may have inconsistent data.</p> <p> <i>Actions</i>: Reflect the actions you may have to take in response to an event. For example, if the status of the volume is <code>impaired</code> and the volume event shows <code>potential-data-inconsistency</code>, then the action shows <code>enable-volume-io</code>. This means that you may want to enable the I/O operations for the volume by calling the <a>EnableVolumeIO</a> action and then check the volume for data consistency.</p> <p>Volume status is based on the volume status checks, and does not reflect the volume state. Therefore, volume status does not indicate volumes in the <code>error</code> state (for example, when a volume is incapable of accepting I/O.)</p>
+    fn describe_volume_status(
+        &self,
+        input: DescribeVolumeStatusRequest,
+    ) -> RusotoFuture<DescribeVolumeStatusResult, DescribeVolumeStatusError> {
+        Ec2::describe_volume_status(&(**self), input)
+    }
+
+    /// <p>Describes the specified EBS volumes.</p> <p>If you are describing a long list of volumes, you can paginate the output to make the list more manageable. The <code>MaxResults</code> parameter sets the maximum number of results returned in a single page. If the list of results exceeds your <code>MaxResults</code> value, then that number of results is returned along with a <code>NextToken</code> value that can be passed to a subsequent <code>DescribeVolumes</code> request to retrieve the remaining results.</p> <p>For more information about EBS volumes, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html">Amazon EBS Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_volumes(
+        &self,
+        input: DescribeVolumesRequest,
+    ) -> RusotoFuture<DescribeVolumesResult, DescribeVolumesError> {
+        Ec2::describe_volumes(&(**self), input)
+    }
+
+    /// <p>Reports the current modification status of EBS volumes.</p> <p>Current-generation EBS volumes support modification of attributes including type, size, and (for <code>io1</code> volumes) IOPS provisioning while either attached to or detached from an instance. Following an action from the API or the console to modify a volume, the status of the modification may be <code>modifying</code>, <code>optimizing</code>, <code>completed</code>, or <code>failed</code>. If a volume has never been modified, then certain elements of the returned <code>VolumeModification</code> objects are null. </p> <p> You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/">Amazon CloudWatch Events User Guide</a>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods">Monitoring Volume Modifications"</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_volumes_modifications(
+        &self,
+        input: DescribeVolumesModificationsRequest,
+    ) -> RusotoFuture<DescribeVolumesModificationsResult, DescribeVolumesModificationsError> {
+        Ec2::describe_volumes_modifications(&(**self), input)
+    }
+
+    /// <p>Describes the specified attribute of the specified VPC. You can specify only one attribute at a time.</p>
+    fn describe_vpc_attribute(
+        &self,
+        input: DescribeVpcAttributeRequest,
+    ) -> RusotoFuture<DescribeVpcAttributeResult, DescribeVpcAttributeError> {
+        Ec2::describe_vpc_attribute(&(**self), input)
+    }
+
+    /// <p>Describes the ClassicLink status of one or more VPCs.</p>
+    fn describe_vpc_classic_link(
+        &self,
+        input: DescribeVpcClassicLinkRequest,
+    ) -> RusotoFuture<DescribeVpcClassicLinkResult, DescribeVpcClassicLinkError> {
+        Ec2::describe_vpc_classic_link(&(**self), input)
+    }
+
+    /// <p>Describes the ClassicLink DNS support status of one or more VPCs. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn describe_vpc_classic_link_dns_support(
+        &self,
+        input: DescribeVpcClassicLinkDnsSupportRequest,
+    ) -> RusotoFuture<DescribeVpcClassicLinkDnsSupportResult, DescribeVpcClassicLinkDnsSupportError>
+    {
+        Ec2::describe_vpc_classic_link_dns_support(&(**self), input)
+    }
+
+    /// <p>Describes the connection notifications for VPC endpoints and VPC endpoint services.</p>
+    fn describe_vpc_endpoint_connection_notifications(
+        &self,
+        input: DescribeVpcEndpointConnectionNotificationsRequest,
+    ) -> RusotoFuture<
+        DescribeVpcEndpointConnectionNotificationsResult,
+        DescribeVpcEndpointConnectionNotificationsError,
+    > {
+        Ec2::describe_vpc_endpoint_connection_notifications(&(**self), input)
+    }
+
+    /// <p>Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that are pending your acceptance.</p>
+    fn describe_vpc_endpoint_connections(
+        &self,
+        input: DescribeVpcEndpointConnectionsRequest,
+    ) -> RusotoFuture<DescribeVpcEndpointConnectionsResult, DescribeVpcEndpointConnectionsError>
+    {
+        Ec2::describe_vpc_endpoint_connections(&(**self), input)
+    }
+
+    /// <p>Describes the VPC endpoint service configurations in your account (your services).</p>
+    fn describe_vpc_endpoint_service_configurations(
+        &self,
+        input: DescribeVpcEndpointServiceConfigurationsRequest,
+    ) -> RusotoFuture<
+        DescribeVpcEndpointServiceConfigurationsResult,
+        DescribeVpcEndpointServiceConfigurationsError,
+    > {
+        Ec2::describe_vpc_endpoint_service_configurations(&(**self), input)
+    }
+
+    /// <p>Describes the principals (service consumers) that are permitted to discover your VPC endpoint service.</p>
+    fn describe_vpc_endpoint_service_permissions(
+        &self,
+        input: DescribeVpcEndpointServicePermissionsRequest,
+    ) -> RusotoFuture<
+        DescribeVpcEndpointServicePermissionsResult,
+        DescribeVpcEndpointServicePermissionsError,
+    > {
+        Ec2::describe_vpc_endpoint_service_permissions(&(**self), input)
+    }
+
+    /// <p>Describes available services to which you can create a VPC endpoint.</p>
+    fn describe_vpc_endpoint_services(
+        &self,
+        input: DescribeVpcEndpointServicesRequest,
+    ) -> RusotoFuture<DescribeVpcEndpointServicesResult, DescribeVpcEndpointServicesError> {
+        Ec2::describe_vpc_endpoint_services(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your VPC endpoints.</p>
+    fn describe_vpc_endpoints(
+        &self,
+        input: DescribeVpcEndpointsRequest,
+    ) -> RusotoFuture<DescribeVpcEndpointsResult, DescribeVpcEndpointsError> {
+        Ec2::describe_vpc_endpoints(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your VPC peering connections.</p>
+    fn describe_vpc_peering_connections(
+        &self,
+        input: DescribeVpcPeeringConnectionsRequest,
+    ) -> RusotoFuture<DescribeVpcPeeringConnectionsResult, DescribeVpcPeeringConnectionsError> {
+        Ec2::describe_vpc_peering_connections(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your VPCs.</p>
+    fn describe_vpcs(
+        &self,
+        input: DescribeVpcsRequest,
+    ) -> RusotoFuture<DescribeVpcsResult, DescribeVpcsError> {
+        Ec2::describe_vpcs(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your VPN connections.</p> <p>For more information about VPN connections, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">AWS Managed VPN Connections</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn describe_vpn_connections(
+        &self,
+        input: DescribeVpnConnectionsRequest,
+    ) -> RusotoFuture<DescribeVpnConnectionsResult, DescribeVpnConnectionsError> {
+        Ec2::describe_vpn_connections(&(**self), input)
+    }
+
+    /// <p>Describes one or more of your virtual private gateways.</p> <p>For more information about virtual private gateways, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">AWS Managed VPN Connections</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn describe_vpn_gateways(
+        &self,
+        input: DescribeVpnGatewaysRequest,
+    ) -> RusotoFuture<DescribeVpnGatewaysResult, DescribeVpnGatewaysError> {
+        Ec2::describe_vpn_gateways(&(**self), input)
+    }
+
+    /// <p>Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the instance has been unlinked, the VPC security groups are no longer associated with it. An instance is automatically unlinked from a VPC when it's stopped.</p>
+    fn detach_classic_link_vpc(
+        &self,
+        input: DetachClassicLinkVpcRequest,
+    ) -> RusotoFuture<DetachClassicLinkVpcResult, DetachClassicLinkVpcError> {
+        Ec2::detach_classic_link_vpc(&(**self), input)
+    }
+
+    /// <p>Detaches an Internet gateway from a VPC, disabling connectivity between the Internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.</p>
+    fn detach_internet_gateway(
+        &self,
+        input: DetachInternetGatewayRequest,
+    ) -> RusotoFuture<(), DetachInternetGatewayError> {
+        Ec2::detach_internet_gateway(&(**self), input)
+    }
+
+    /// <p>Detaches a network interface from an instance.</p>
+    fn detach_network_interface(
+        &self,
+        input: DetachNetworkInterfaceRequest,
+    ) -> RusotoFuture<(), DetachNetworkInterfaceError> {
+        Ec2::detach_network_interface(&(**self), input)
+    }
+
+    /// <p>Detaches an EBS volume from an instance. Make sure to unmount any file systems on the device within your operating system before detaching the volume. Failure to do so can result in the volume becoming stuck in the <code>busy</code> state while detaching. If this happens, detachment can be delayed indefinitely until you unmount the volume, force detachment, reboot the instance, or all three. If an EBS volume is the root device of an instance, it can't be detached while the instance is running. To detach the root volume, stop the instance first.</p> <p>When a volume with an AWS Marketplace product code is detached from an instance, the product code is no longer associated with the instance.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html">Detaching an Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn detach_volume(
+        &self,
+        input: DetachVolumeRequest,
+    ) -> RusotoFuture<VolumeAttachment, DetachVolumeError> {
+        Ec2::detach_volume(&(**self), input)
+    }
+
+    /// <p>Detaches a virtual private gateway from a VPC. You do this if you're planning to turn off the VPC and not use it anymore. You can confirm a virtual private gateway has been completely detached from a VPC by describing the virtual private gateway (any attachments to the virtual private gateway are also described).</p> <p>You must wait for the attachment's state to switch to <code>detached</code> before you can delete the VPC or attach a different VPC to the virtual private gateway.</p>
+    fn detach_vpn_gateway(
+        &self,
+        input: DetachVpnGatewayRequest,
+    ) -> RusotoFuture<(), DetachVpnGatewayError> {
+        Ec2::detach_vpn_gateway(&(**self), input)
+    }
+
+    /// <p>Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC.</p>
+    fn disable_vgw_route_propagation(
+        &self,
+        input: DisableVgwRoutePropagationRequest,
+    ) -> RusotoFuture<(), DisableVgwRoutePropagationError> {
+        Ec2::disable_vgw_route_propagation(&(**self), input)
+    }
+
+    /// <p>Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances linked to it.</p>
+    fn disable_vpc_classic_link(
+        &self,
+        input: DisableVpcClassicLinkRequest,
+    ) -> RusotoFuture<DisableVpcClassicLinkResult, DisableVpcClassicLinkError> {
+        Ec2::disable_vpc_classic_link(&(**self), input)
+    }
+
+    /// <p>Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames resolve to public IP addresses when addressed between a linked EC2-Classic instance and instances in the VPC to which it's linked. For more information about ClassicLink, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn disable_vpc_classic_link_dns_support(
+        &self,
+        input: DisableVpcClassicLinkDnsSupportRequest,
+    ) -> RusotoFuture<DisableVpcClassicLinkDnsSupportResult, DisableVpcClassicLinkDnsSupportError>
+    {
+        Ec2::disable_vpc_classic_link_dns_support(&(**self), input)
+    }
+
+    /// <p>Disassociates an Elastic IP address from the instance or network interface it's associated with.</p> <p>An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error.</p>
+    fn disassociate_address(
+        &self,
+        input: DisassociateAddressRequest,
+    ) -> RusotoFuture<(), DisassociateAddressError> {
+        Ec2::disassociate_address(&(**self), input)
+    }
+
+    /// <p>Disassociates an IAM instance profile from a running or stopped instance.</p> <p>Use <a>DescribeIamInstanceProfileAssociations</a> to get the association ID.</p>
+    fn disassociate_iam_instance_profile(
+        &self,
+        input: DisassociateIamInstanceProfileRequest,
+    ) -> RusotoFuture<DisassociateIamInstanceProfileResult, DisassociateIamInstanceProfileError>
+    {
+        Ec2::disassociate_iam_instance_profile(&(**self), input)
+    }
+
+    /// <p>Disassociates a subnet from a route table.</p> <p>After you perform this action, the subnet no longer uses the routes in the route table. Instead, it uses the routes in the VPC's main route table. For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn disassociate_route_table(
+        &self,
+        input: DisassociateRouteTableRequest,
+    ) -> RusotoFuture<(), DisassociateRouteTableError> {
+        Ec2::disassociate_route_table(&(**self), input)
+    }
+
+    /// <p>Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only. You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it. </p>
+    fn disassociate_subnet_cidr_block(
+        &self,
+        input: DisassociateSubnetCidrBlockRequest,
+    ) -> RusotoFuture<DisassociateSubnetCidrBlockResult, DisassociateSubnetCidrBlockError> {
+        Ec2::disassociate_subnet_cidr_block(&(**self), input)
+    }
+
+    /// <p>Disassociates a CIDR block from a VPC. To disassociate the CIDR block, you must specify its association ID. You can get the association ID by using <a>DescribeVpcs</a>. You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it. </p> <p>You cannot disassociate the CIDR block with which you originally created the VPC (the primary CIDR block).</p>
+    fn disassociate_vpc_cidr_block(
+        &self,
+        input: DisassociateVpcCidrBlockRequest,
+    ) -> RusotoFuture<DisassociateVpcCidrBlockResult, DisassociateVpcCidrBlockError> {
+        Ec2::disassociate_vpc_cidr_block(&(**self), input)
+    }
+
+    /// <p>Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.</p>
+    fn enable_vgw_route_propagation(
+        &self,
+        input: EnableVgwRoutePropagationRequest,
+    ) -> RusotoFuture<(), EnableVgwRoutePropagationError> {
+        Ec2::enable_vgw_route_propagation(&(**self), input)
+    }
+
+    /// <p>Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.</p>
+    fn enable_volume_io(
+        &self,
+        input: EnableVolumeIORequest,
+    ) -> RusotoFuture<(), EnableVolumeIOError> {
+        Ec2::enable_volume_io(&(**self), input)
+    }
+
+    /// <p>Enables a VPC for ClassicLink. You can then link EC2-Classic instances to your ClassicLink-enabled VPC to allow communication over private IP addresses. You cannot enable your VPC for ClassicLink if any of your VPC's route tables have existing routes for address ranges within the <code>10.0.0.0/8</code> IP address range, excluding local routes for VPCs in the <code>10.0.0.0/16</code> and <code>10.1.0.0/16</code> IP address ranges. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn enable_vpc_classic_link(
+        &self,
+        input: EnableVpcClassicLinkRequest,
+    ) -> RusotoFuture<EnableVpcClassicLinkResult, EnableVpcClassicLinkError> {
+        Ec2::enable_vpc_classic_link(&(**self), input)
+    }
+
+    /// <p>Enables a VPC to support DNS hostname resolution for ClassicLink. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information about ClassicLink, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn enable_vpc_classic_link_dns_support(
+        &self,
+        input: EnableVpcClassicLinkDnsSupportRequest,
+    ) -> RusotoFuture<EnableVpcClassicLinkDnsSupportResult, EnableVpcClassicLinkDnsSupportError>
+    {
+        Ec2::enable_vpc_classic_link_dns_support(&(**self), input)
+    }
+
+    /// <p>Gets the console output for the specified instance. For Linux instances, the instance console output displays the exact console output that would normally be displayed on a physical monitor attached to a computer. For Windows instances, the instance console output includes output from the EC2Config service.</p> <p> <a>GetConsoleOutput</a> returns up to 64 KB of console output shortly after it's generated by the instance.</p> <p>By default, the console output returns buffered information that was posted shortly after an instance transition state (start, stop, reboot, or terminate). This information is available for at least one hour after the most recent post.</p> <p>You can optionally retrieve the latest serial console output at any time during the instance lifecycle. This option is only supported on C5, M5, and <code>i3.metal</code> instances.</p>
+    fn get_console_output(
+        &self,
+        input: GetConsoleOutputRequest,
+    ) -> RusotoFuture<GetConsoleOutputResult, GetConsoleOutputError> {
+        Ec2::get_console_output(&(**self), input)
+    }
+
+    /// <p>Retrieve a JPG-format screenshot of a running instance to help with troubleshooting.</p> <p>The returned content is Base64-encoded.</p>
+    fn get_console_screenshot(
+        &self,
+        input: GetConsoleScreenshotRequest,
+    ) -> RusotoFuture<GetConsoleScreenshotResult, GetConsoleScreenshotError> {
+        Ec2::get_console_screenshot(&(**self), input)
+    }
+
+    /// <p>Preview a reservation purchase with configurations that match those of your Dedicated Host. You must have active Dedicated Hosts in your account before you purchase a reservation.</p> <p>This is a preview of the <a>PurchaseHostReservation</a> action and does not result in the offering being purchased.</p>
+    fn get_host_reservation_purchase_preview(
+        &self,
+        input: GetHostReservationPurchasePreviewRequest,
+    ) -> RusotoFuture<GetHostReservationPurchasePreviewResult, GetHostReservationPurchasePreviewError>
+    {
+        Ec2::get_host_reservation_purchase_preview(&(**self), input)
+    }
+
+    /// <p>Retrieves the configuration data of the specified instance. You can use this data to create a launch template.</p>
+    fn get_launch_template_data(
+        &self,
+        input: GetLaunchTemplateDataRequest,
+    ) -> RusotoFuture<GetLaunchTemplateDataResult, GetLaunchTemplateDataError> {
+        Ec2::get_launch_template_data(&(**self), input)
+    }
+
+    /// <p>Retrieves the encrypted administrator password for a running Windows instance.</p> <p>The Windows password is generated at boot by the <code>EC2Config</code> service or <code>EC2Launch</code> scripts (Windows Server 2016 and later). This usually only happens the first time an instance is launched. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html">EC2Config</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html">EC2Launch</a> in the Amazon Elastic Compute Cloud User Guide.</p> <p>For the <code>EC2Config</code> service, the password is not generated for rebundled AMIs unless <code>Ec2SetPassword</code> is enabled before bundling.</p> <p>The password is encrypted using the key pair that you specified when you launched the instance. You must provide the corresponding key pair file.</p> <p>When you launch an instance, password generation and encryption may take a few minutes. If you try to retrieve the password before it's available, the output returns an empty string. We recommend that you wait up to 15 minutes after launching an instance before trying to retrieve the generated password.</p>
+    fn get_password_data(
+        &self,
+        input: GetPasswordDataRequest,
+    ) -> RusotoFuture<GetPasswordDataResult, GetPasswordDataError> {
+        Ec2::get_password_data(&(**self), input)
+    }
+
+    /// <p>Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance. If the exchange cannot be performed, the reason is returned in the response. Use <a>AcceptReservedInstancesExchangeQuote</a> to perform the exchange.</p>
+    fn get_reserved_instances_exchange_quote(
+        &self,
+        input: GetReservedInstancesExchangeQuoteRequest,
+    ) -> RusotoFuture<GetReservedInstancesExchangeQuoteResult, GetReservedInstancesExchangeQuoteError>
+    {
+        Ec2::get_reserved_instances_exchange_quote(&(**self), input)
+    }
+
+    /// <p>Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI). For more information, see <a href="http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html">Importing a VM as an Image Using VM Import/Export</a> in the <i>VM Import/Export User Guide</i>.</p>
+    fn import_image(
+        &self,
+        input: ImportImageRequest,
+    ) -> RusotoFuture<ImportImageResult, ImportImageError> {
+        Ec2::import_image(&(**self), input)
+    }
+
+    /// <p>Creates an import instance task using metadata from the specified disk image. <code>ImportInstance</code> only supports single-volume VMs. To import multi-volume VMs, use <a>ImportImage</a>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html">Importing a Virtual Machine Using the Amazon EC2 CLI</a>.</p> <p>For information about the import manifest referenced by this API action, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html">VM Import Manifest</a>.</p>
+    fn import_instance(
+        &self,
+        input: ImportInstanceRequest,
+    ) -> RusotoFuture<ImportInstanceResult, ImportInstanceError> {
+        Ec2::import_instance(&(**self), input)
+    }
+
+    /// <p>Imports the public key from an RSA key pair that you created with a third-party tool. Compare this with <a>CreateKeyPair</a>, in which AWS creates the key pair and gives the keys to you (AWS keeps a copy of the public key). With ImportKeyPair, you create the key pair and give AWS just the public key. The private key is never transferred between you and AWS.</p> <p>For more information about key pairs, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn import_key_pair(
+        &self,
+        input: ImportKeyPairRequest,
+    ) -> RusotoFuture<ImportKeyPairResult, ImportKeyPairError> {
+        Ec2::import_key_pair(&(**self), input)
+    }
+
+    /// <p>Imports a disk into an EBS snapshot.</p>
+    fn import_snapshot(
+        &self,
+        input: ImportSnapshotRequest,
+    ) -> RusotoFuture<ImportSnapshotResult, ImportSnapshotError> {
+        Ec2::import_snapshot(&(**self), input)
+    }
+
+    /// <p>Creates an import volume task using metadata from the specified disk image.For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html">Importing Disks to Amazon EBS</a>.</p> <p>For information about the import manifest referenced by this API action, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html">VM Import Manifest</a>.</p>
+    fn import_volume(
+        &self,
+        input: ImportVolumeRequest,
+    ) -> RusotoFuture<ImportVolumeResult, ImportVolumeError> {
+        Ec2::import_volume(&(**self), input)
+    }
+
+    /// <p>Modifies the specified EC2 Fleet.</p> <p>While the EC2 Fleet is being modified, it is in the <code>modifying</code> state.</p>
+    fn modify_fleet(
+        &self,
+        input: ModifyFleetRequest,
+    ) -> RusotoFuture<ModifyFleetResult, ModifyFleetError> {
+        Ec2::modify_fleet(&(**self), input)
+    }
+
+    /// <p>Modifies the specified attribute of the specified Amazon FPGA Image (AFI).</p>
+    fn modify_fpga_image_attribute(
+        &self,
+        input: ModifyFpgaImageAttributeRequest,
+    ) -> RusotoFuture<ModifyFpgaImageAttributeResult, ModifyFpgaImageAttributeError> {
+        Ec2::modify_fpga_image_attribute(&(**self), input)
+    }
+
+    /// <p>Modify the auto-placement setting of a Dedicated Host. When auto-placement is enabled, any instances that you launch with a tenancy of <code>host</code> but without a specific host ID are placed onto any available Dedicated Host in your account that has auto-placement enabled. When auto-placement is disabled, you need to provide a host ID ito have the instance launch onto a specific host. If no host ID is provided, the instance is launched onto a suitable host with auto-placement enabled.</p>
+    fn modify_hosts(
+        &self,
+        input: ModifyHostsRequest,
+    ) -> RusotoFuture<ModifyHostsResult, ModifyHostsError> {
+        Ec2::modify_hosts(&(**self), input)
+    }
+
+    /// <p>Modifies the ID format for the specified resource on a per-region basis. You can specify that resources should receive longer IDs (17-character IDs) when they are created.</p> <p>This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: <code>bundle</code> | <code>conversion-task</code> | <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> | <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> | <code>import-task</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code> | <code>prefix-list</code> | <code>route-table</code> | <code>route-table-association</code> | <code>security-group</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>vpc</code> | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>.</p> <p>This setting applies to the IAM user who makes the request; it does not apply to the entire AWS account. By default, an IAM user defaults to the same settings as the root user. If you're using this action as the root user, then these settings apply to the entire account, unless an IAM user explicitly overrides these settings for themselves. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html">Resource IDs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. </p> <p>Resources created with longer IDs are visible to all IAM roles and users, regardless of these settings and provided that they have permission to use the relevant <code>Describe</code> command for the resource type.</p>
+    fn modify_id_format(
+        &self,
+        input: ModifyIdFormatRequest,
+    ) -> RusotoFuture<(), ModifyIdFormatError> {
+        Ec2::modify_id_format(&(**self), input)
+    }
+
+    /// <p>Modifies the ID format of a resource for a specified IAM user, IAM role, or the root user for an account; or all IAM users, IAM roles, and the root user for an account. You can specify that resources should receive longer IDs (17-character IDs) when they are created. </p> <p>This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: <code>bundle</code> | <code>conversion-task</code> | <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> | <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> | <code>import-task</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code> | <code>prefix-list</code> | <code>route-table</code> | <code>route-table-association</code> | <code>security-group</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>vpc</code> | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>. </p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html">Resource IDs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. </p> <p>This setting applies to the principal specified in the request; it does not apply to the principal that makes the request. </p> <p>Resources created with longer IDs are visible to all IAM roles and users, regardless of these settings and provided that they have permission to use the relevant <code>Describe</code> command for the resource type.</p>
+    fn modify_identity_id_format(
+        &self,
+        input: ModifyIdentityIdFormatRequest,
+    ) -> RusotoFuture<(), ModifyIdentityIdFormatError> {
+        Ec2::modify_identity_id_format(&(**self), input)
+    }
+
+    /// <p>Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time. You can use the <code>Attribute</code> parameter to specify the attribute or one of the following parameters: <code>Description</code>, <code>LaunchPermission</code>, or <code>ProductCode</code>.</p> <p>AWS Marketplace product codes cannot be modified. Images with an AWS Marketplace product code cannot be made public.</p> <p>To enable the SriovNetSupport enhanced networking attribute of an image, enable SriovNetSupport on an instance and create an AMI from the instance.</p>
+    fn modify_image_attribute(
+        &self,
+        input: ModifyImageAttributeRequest,
+    ) -> RusotoFuture<(), ModifyImageAttributeError> {
+        Ec2::modify_image_attribute(&(**self), input)
+    }
+
+    /// <p>Modifies the specified attribute of the specified instance. You can specify only one attribute at a time.</p> <p> <b>Note: </b>Using this action to change the security groups associated with an elastic network interface (ENI) attached to an instance in a VPC can result in an error if the instance has more than one ENI. To change the security groups associated with an ENI attached to an instance that has multiple ENIs, we recommend that you use the <a>ModifyNetworkInterfaceAttribute</a> action.</p> <p>To modify some attributes, the instance must be stopped. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html">Modifying Attributes of a Stopped Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn modify_instance_attribute(
+        &self,
+        input: ModifyInstanceAttributeRequest,
+    ) -> RusotoFuture<(), ModifyInstanceAttributeError> {
+        Ec2::modify_instance_attribute(&(**self), input)
+    }
+
+    /// <p>Modifies the credit option for CPU usage on a running or stopped T2 instance. The credit options are <code>standard</code> and <code>unlimited</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html">T2 Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn modify_instance_credit_specification(
+        &self,
+        input: ModifyInstanceCreditSpecificationRequest,
+    ) -> RusotoFuture<ModifyInstanceCreditSpecificationResult, ModifyInstanceCreditSpecificationError>
+    {
+        Ec2::modify_instance_credit_specification(&(**self), input)
+    }
+
+    /// <p>Modifies the placement attributes for a specified instance. You can do the following:</p> <ul> <li> <p>Modify the affinity between an instance and a <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html">Dedicated Host</a>. When affinity is set to <code>host</code> and the instance is not associated with a specific Dedicated Host, the next time the instance is launched, it is automatically associated with the host on which it lands. If the instance is restarted or rebooted, this relationship persists.</p> </li> <li> <p>Change the Dedicated Host with which an instance is associated.</p> </li> <li> <p>Change the instance tenancy of an instance from <code>host</code> to <code>dedicated</code>, or from <code>dedicated</code> to <code>host</code>.</p> </li> <li> <p>Move an instance to or from a <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">placement group</a>.</p> </li> </ul> <p>At least one attribute for affinity, host ID, tenancy, or placement group name must be specified in the request. Affinity and tenancy can be modified in the same request.</p> <p>To modify the host ID, tenancy, or placement group for an instance, the instance must be in the <code>stopped</code> state.</p>
+    fn modify_instance_placement(
+        &self,
+        input: ModifyInstancePlacementRequest,
+    ) -> RusotoFuture<ModifyInstancePlacementResult, ModifyInstancePlacementError> {
+        Ec2::modify_instance_placement(&(**self), input)
+    }
+
+    /// <p>Modifies a launch template. You can specify which version of the launch template to set as the default version. When launching an instance, the default version applies when a launch template version is not specified.</p>
+    fn modify_launch_template(
+        &self,
+        input: ModifyLaunchTemplateRequest,
+    ) -> RusotoFuture<ModifyLaunchTemplateResult, ModifyLaunchTemplateError> {
+        Ec2::modify_launch_template(&(**self), input)
+    }
+
+    /// <p>Modifies the specified network interface attribute. You can specify only one attribute at a time.</p>
+    fn modify_network_interface_attribute(
+        &self,
+        input: ModifyNetworkInterfaceAttributeRequest,
+    ) -> RusotoFuture<(), ModifyNetworkInterfaceAttributeError> {
+        Ec2::modify_network_interface_attribute(&(**self), input)
+    }
+
+    /// <p>Modifies the Availability Zone, instance count, instance type, or network platform (EC2-Classic or EC2-VPC) of your Reserved Instances. The Reserved Instances to be modified must be identical, except for Availability Zone, network platform, and instance type.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html">Modifying Reserved Instances</a> in the Amazon Elastic Compute Cloud User Guide.</p>
+    fn modify_reserved_instances(
+        &self,
+        input: ModifyReservedInstancesRequest,
+    ) -> RusotoFuture<ModifyReservedInstancesResult, ModifyReservedInstancesError> {
+        Ec2::modify_reserved_instances(&(**self), input)
+    }
+
+    /// <p>Adds or removes permission settings for the specified snapshot. You may add or remove specified AWS account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single API call. If you need to both add and remove account IDs for a snapshot, you must use multiple API calls.</p> <p>Encrypted snapshots and snapshots with AWS Marketplace product codes cannot be made public. Snapshots encrypted with your default CMK cannot be shared with other accounts.</p> <p>For more information about modifying snapshot permissions, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html">Sharing Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn modify_snapshot_attribute(
+        &self,
+        input: ModifySnapshotAttributeRequest,
+    ) -> RusotoFuture<(), ModifySnapshotAttributeError> {
+        Ec2::modify_snapshot_attribute(&(**self), input)
+    }
+
+    /// <p>Modifies the specified Spot Fleet request.</p> <p>While the Spot Fleet request is being modified, it is in the <code>modifying</code> state.</p> <p>To scale up your Spot Fleet, increase its target capacity. The Spot Fleet launches the additional Spot Instances according to the allocation strategy for the Spot Fleet request. If the allocation strategy is <code>lowestPrice</code>, the Spot Fleet launches instances using the Spot pool with the lowest price. If the allocation strategy is <code>diversified</code>, the Spot Fleet distributes the instances across the Spot pools.</p> <p>To scale down your Spot Fleet, decrease its target capacity. First, the Spot Fleet cancels any open requests that exceed the new target capacity. You can request that the Spot Fleet terminate Spot Instances until the size of the fleet no longer exceeds the new target capacity. If the allocation strategy is <code>lowestPrice</code>, the Spot Fleet terminates the instances with the highest price per unit. If the allocation strategy is <code>diversified</code>, the Spot Fleet terminates instances across the Spot pools. Alternatively, you can request that the Spot Fleet keep the fleet at its current size, but not replace any Spot Instances that are interrupted or that you terminate manually.</p> <p>If you are finished with your Spot Fleet for now, but will use it again later, you can set the target capacity to 0.</p>
+    fn modify_spot_fleet_request(
+        &self,
+        input: ModifySpotFleetRequestRequest,
+    ) -> RusotoFuture<ModifySpotFleetRequestResponse, ModifySpotFleetRequestError> {
+        Ec2::modify_spot_fleet_request(&(**self), input)
+    }
+
+    /// <p>Modifies a subnet attribute. You can only modify one attribute at a time.</p>
+    fn modify_subnet_attribute(
+        &self,
+        input: ModifySubnetAttributeRequest,
+    ) -> RusotoFuture<(), ModifySubnetAttributeError> {
+        Ec2::modify_subnet_attribute(&(**self), input)
+    }
+
+    /// <p>You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity. If your EBS volume is attached to a current-generation EC2 instance type, you may be able to apply these changes without stopping the instance or detaching the volume from it. For more information about modifying an EBS volume running Linux, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or Type of an EBS Volume on Linux</a>. For more information about modifying an EBS volume running Windows, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or Type of an EBS Volume on Windows</a>. </p> <p> When you complete a resize operation on your volume, you need to extend the volume's file-system size to take advantage of the new storage capacity. For information about extending a Linux file system, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux">Extending a Linux File System</a>. For information about extending a Windows file system, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows">Extending a Windows File System</a>. </p> <p> You can use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/">Amazon CloudWatch Events User Guide</a>. You can also track the status of a modification using the <a>DescribeVolumesModifications</a> API. For information about tracking status changes using either method, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods">Monitoring Volume Modifications</a>. </p> <p>With previous-generation instance types, resizing an EBS volume may require detaching and reattaching the volume or stopping and restarting the instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or Type of an EBS Volume on Linux</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or Type of an EBS Volume on Windows</a>.</p> <p>If you reach the maximum volume modification rate per volume limit, you will need to wait at least six hours before applying further modifications to the affected EBS volume.</p>
+    fn modify_volume(
+        &self,
+        input: ModifyVolumeRequest,
+    ) -> RusotoFuture<ModifyVolumeResult, ModifyVolumeError> {
+        Ec2::modify_volume(&(**self), input)
+    }
+
+    /// <p>Modifies a volume attribute.</p> <p>By default, all I/O operations for the volume are suspended when the data on the volume is determined to be potentially inconsistent, to prevent undetectable, latent data corruption. The I/O access to the volume can be resumed by first enabling I/O access and then checking the data consistency on your volume.</p> <p>You can change the default behavior to resume I/O operations. We recommend that you change this only for boot volumes or for volumes that are stateless or disposable.</p>
+    fn modify_volume_attribute(
+        &self,
+        input: ModifyVolumeAttributeRequest,
+    ) -> RusotoFuture<(), ModifyVolumeAttributeError> {
+        Ec2::modify_volume_attribute(&(**self), input)
+    }
+
+    /// <p>Modifies the specified attribute of the specified VPC.</p>
+    fn modify_vpc_attribute(
+        &self,
+        input: ModifyVpcAttributeRequest,
+    ) -> RusotoFuture<(), ModifyVpcAttributeError> {
+        Ec2::modify_vpc_attribute(&(**self), input)
+    }
+
+    /// <p>Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface or gateway). For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html">VPC Endpoints</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn modify_vpc_endpoint(
+        &self,
+        input: ModifyVpcEndpointRequest,
+    ) -> RusotoFuture<ModifyVpcEndpointResult, ModifyVpcEndpointError> {
+        Ec2::modify_vpc_endpoint(&(**self), input)
+    }
+
+    /// <p>Modifies a connection notification for VPC endpoint or VPC endpoint service. You can change the SNS topic for the notification, or the events for which to be notified. </p>
+    fn modify_vpc_endpoint_connection_notification(
+        &self,
+        input: ModifyVpcEndpointConnectionNotificationRequest,
+    ) -> RusotoFuture<
+        ModifyVpcEndpointConnectionNotificationResult,
+        ModifyVpcEndpointConnectionNotificationError,
+    > {
+        Ec2::modify_vpc_endpoint_connection_notification(&(**self), input)
+    }
+
+    /// <p>Modifies the attributes of your VPC endpoint service configuration. You can change the Network Load Balancers for your service, and you can specify whether acceptance is required for requests to connect to your endpoint service through an interface VPC endpoint.</p>
+    fn modify_vpc_endpoint_service_configuration(
+        &self,
+        input: ModifyVpcEndpointServiceConfigurationRequest,
+    ) -> RusotoFuture<
+        ModifyVpcEndpointServiceConfigurationResult,
+        ModifyVpcEndpointServiceConfigurationError,
+    > {
+        Ec2::modify_vpc_endpoint_service_configuration(&(**self), input)
+    }
+
+    /// <p>Modifies the permissions for your <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html">VPC endpoint service</a>. You can add or remove permissions for service consumers (IAM users, IAM roles, and AWS accounts) to connect to your endpoint service.</p>
+    fn modify_vpc_endpoint_service_permissions(
+        &self,
+        input: ModifyVpcEndpointServicePermissionsRequest,
+    ) -> RusotoFuture<
+        ModifyVpcEndpointServicePermissionsResult,
+        ModifyVpcEndpointServicePermissionsError,
+    > {
+        Ec2::modify_vpc_endpoint_service_permissions(&(**self), input)
+    }
+
+    /// <p>Modifies the VPC peering connection options on one side of a VPC peering connection. You can do the following:</p> <ul> <li> <p>Enable/disable communication over the peering connection between an EC2-Classic instance that's linked to your VPC (using ClassicLink) and instances in the peer VPC.</p> </li> <li> <p>Enable/disable communication over the peering connection between instances in your VPC and an EC2-Classic instance that's linked to the peer VPC.</p> </li> <li> <p>Enable/disable the ability to resolve public DNS hostnames to private IP addresses when queried from instances in the peer VPC.</p> </li> </ul> <p>If the peered VPCs are in different accounts, each owner must initiate a separate request to modify the peering connection options, depending on whether their VPC was the requester or accepter for the VPC peering connection. If the peered VPCs are in the same account, you can modify the requester and accepter options in the same request. To confirm which VPC is the accepter and requester for a VPC peering connection, use the <a>DescribeVpcPeeringConnections</a> command.</p>
+    fn modify_vpc_peering_connection_options(
+        &self,
+        input: ModifyVpcPeeringConnectionOptionsRequest,
+    ) -> RusotoFuture<ModifyVpcPeeringConnectionOptionsResult, ModifyVpcPeeringConnectionOptionsError>
+    {
+        Ec2::modify_vpc_peering_connection_options(&(**self), input)
+    }
+
+    /// <p>Modifies the instance tenancy attribute of the specified VPC. You can change the instance tenancy attribute of a VPC to <code>default</code> only. You cannot change the instance tenancy attribute to <code>dedicated</code>.</p> <p>After you modify the tenancy of the VPC, any new instances that you launch into the VPC have a tenancy of <code>default</code>, unless you specify otherwise during launch. The tenancy of any existing instances in the VPC is not affected.</p> <p>For more information about Dedicated Instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html">Dedicated Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn modify_vpc_tenancy(
+        &self,
+        input: ModifyVpcTenancyRequest,
+    ) -> RusotoFuture<ModifyVpcTenancyResult, ModifyVpcTenancyError> {
+        Ec2::modify_vpc_tenancy(&(**self), input)
+    }
+
+    /// <p>Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances and Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>To disable detailed monitoring, see .</p>
+    fn monitor_instances(
+        &self,
+        input: MonitorInstancesRequest,
+    ) -> RusotoFuture<MonitorInstancesResult, MonitorInstancesError> {
+        Ec2::monitor_instances(&(**self), input)
+    }
+
+    /// <p>Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC platform. The Elastic IP address must be allocated to your account for more than 24 hours, and it must not be associated with an instance. After the Elastic IP address is moved, it is no longer available for use in the EC2-Classic platform, unless you move it back using the <a>RestoreAddressToClassic</a> request. You cannot move an Elastic IP address that was originally allocated for use in the EC2-VPC platform to the EC2-Classic platform. </p>
+    fn move_address_to_vpc(
+        &self,
+        input: MoveAddressToVpcRequest,
+    ) -> RusotoFuture<MoveAddressToVpcResult, MoveAddressToVpcError> {
+        Ec2::move_address_to_vpc(&(**self), input)
+    }
+
+    /// <p>Purchase a reservation with configurations that match those of your Dedicated Host. You must have active Dedicated Hosts in your account before you purchase a reservation. This action results in the specified reservation being purchased and charged to your account.</p>
+    fn purchase_host_reservation(
+        &self,
+        input: PurchaseHostReservationRequest,
+    ) -> RusotoFuture<PurchaseHostReservationResult, PurchaseHostReservationError> {
+        Ec2::purchase_host_reservation(&(**self), input)
+    }
+
+    /// <p>Purchases a Reserved Instance for use with your account. With Reserved Instances, you pay a lower hourly rate compared to On-Demand instance pricing.</p> <p>Use <a>DescribeReservedInstancesOfferings</a> to get a list of Reserved Instance offerings that match your specifications. After you've purchased a Reserved Instance, you can check for your new Reserved Instance with <a>DescribeReservedInstances</a>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html">Reserved Instances</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn purchase_reserved_instances_offering(
+        &self,
+        input: PurchaseReservedInstancesOfferingRequest,
+    ) -> RusotoFuture<PurchaseReservedInstancesOfferingResult, PurchaseReservedInstancesOfferingError>
+    {
+        Ec2::purchase_reserved_instances_offering(&(**self), input)
+    }
+
+    /// <p>Purchases one or more Scheduled Instances with the specified schedule.</p> <p>Scheduled Instances enable you to purchase Amazon EC2 compute capacity by the hour for a one-year term. Before you can purchase a Scheduled Instance, you must call <a>DescribeScheduledInstanceAvailability</a> to check for available schedules and obtain a purchase token. After you purchase a Scheduled Instance, you must call <a>RunScheduledInstances</a> during each scheduled time period.</p> <p>After you purchase a Scheduled Instance, you can't cancel, modify, or resell your purchase.</p>
+    fn purchase_scheduled_instances(
+        &self,
+        input: PurchaseScheduledInstancesRequest,
+    ) -> RusotoFuture<PurchaseScheduledInstancesResult, PurchaseScheduledInstancesError> {
+        Ec2::purchase_scheduled_instances(&(**self), input)
+    }
+
+    /// <p>Requests a reboot of one or more instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.</p> <p>If an instance does not cleanly shut down within four minutes, Amazon EC2 performs a hard reboot.</p> <p>For more information about troubleshooting, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html">Getting Console Output and Rebooting Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn reboot_instances(
+        &self,
+        input: RebootInstancesRequest,
+    ) -> RusotoFuture<(), RebootInstancesError> {
+        Ec2::reboot_instances(&(**self), input)
+    }
+
+    /// <p>Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html">Creating Your Own AMIs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <note> <p>For Amazon EBS-backed instances, <a>CreateImage</a> creates and registers the AMI in a single request, so you don't have to register the AMI yourself.</p> </note> <p>You can also use <code>RegisterImage</code> to create an Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You specify the snapshot using the block device mapping. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html">Launching a Linux Instance from a Backup</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.</p> <p>Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server (SLES), use the EC2 billing product code associated with an AMI to verify the subscription status for package updates. Creating an AMI from an EBS snapshot does not maintain this billing code, and instances launched from such an AMI are not able to connect to package update infrastructure. If you purchase a Reserved Instance offering for one of these Linux distributions and launch instances using an AMI that does not contain the required billing code, your Reserved Instance is not applied to these instances.</p> <p>To create an AMI for operating systems that require a billing code, see <a>CreateImage</a>.</p> <p>If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance store volume invalidates its registration. If you make changes to an image, deregister the previous image and register the new image.</p>
+    fn register_image(
+        &self,
+        input: RegisterImageRequest,
+    ) -> RusotoFuture<RegisterImageResult, RegisterImageError> {
+        Ec2::register_image(&(**self), input)
+    }
+
+    /// <p>Rejects one or more VPC endpoint connection requests to your VPC endpoint service.</p>
+    fn reject_vpc_endpoint_connections(
+        &self,
+        input: RejectVpcEndpointConnectionsRequest,
+    ) -> RusotoFuture<RejectVpcEndpointConnectionsResult, RejectVpcEndpointConnectionsError> {
+        Ec2::reject_vpc_endpoint_connections(&(**self), input)
+    }
+
+    /// <p>Rejects a VPC peering connection request. The VPC peering connection must be in the <code>pending-acceptance</code> state. Use the <a>DescribeVpcPeeringConnections</a> request to view your outstanding VPC peering connection requests. To delete an active VPC peering connection, or to delete a VPC peering connection request that you initiated, use <a>DeleteVpcPeeringConnection</a>.</p>
+    fn reject_vpc_peering_connection(
+        &self,
+        input: RejectVpcPeeringConnectionRequest,
+    ) -> RusotoFuture<RejectVpcPeeringConnectionResult, RejectVpcPeeringConnectionError> {
+        Ec2::reject_vpc_peering_connection(&(**self), input)
+    }
+
+    /// <p>Releases the specified Elastic IP address.</p> <p>[EC2-Classic, default VPC] Releasing an Elastic IP address automatically disassociates it from any instance that it's associated with. To disassociate an Elastic IP address without releasing it, use <a>DisassociateAddress</a>.</p> <p>[Nondefault VPC] You must use <a>DisassociateAddress</a> to disassociate the Elastic IP address before you can release it. Otherwise, Amazon EC2 returns an error (<code>InvalidIPAddress.InUse</code>).</p> <p>After releasing an Elastic IP address, it is released to the IP address pool. Be sure to update your DNS records and any servers or devices that communicate with the address. If you attempt to release an Elastic IP address that you already released, you'll get an <code>AuthFailure</code> error if the address is already allocated to another AWS account.</p> <p>[EC2-VPC] After you release an Elastic IP address for use in a VPC, you might be able to recover it. For more information, see <a>AllocateAddress</a>.</p>
+    fn release_address(
+        &self,
+        input: ReleaseAddressRequest,
+    ) -> RusotoFuture<(), ReleaseAddressError> {
+        Ec2::release_address(&(**self), input)
+    }
+
+    /// <p>When you no longer want to use an On-Demand Dedicated Host it can be released. On-Demand billing is stopped and the host goes into <code>released</code> state. The host ID of Dedicated Hosts that have been released can no longer be specified in another request, for example, ModifyHosts. You must stop or terminate all instances on a host before it can be released.</p> <p>When Dedicated Hosts are released, it may take some time for them to stop counting toward your limit and you may receive capacity errors when trying to allocate new Dedicated Hosts. Wait a few minutes and then try again.</p> <p>Released hosts still appear in a <a>DescribeHosts</a> response.</p>
+    fn release_hosts(
+        &self,
+        input: ReleaseHostsRequest,
+    ) -> RusotoFuture<ReleaseHostsResult, ReleaseHostsError> {
+        Ec2::release_hosts(&(**self), input)
+    }
+
+    /// <p>Replaces an IAM instance profile for the specified running instance. You can use this action to change the IAM instance profile that's associated with an instance without having to disassociate the existing IAM instance profile first.</p> <p>Use <a>DescribeIamInstanceProfileAssociations</a> to get the association ID.</p>
+    fn replace_iam_instance_profile_association(
+        &self,
+        input: ReplaceIamInstanceProfileAssociationRequest,
+    ) -> RusotoFuture<
+        ReplaceIamInstanceProfileAssociationResult,
+        ReplaceIamInstanceProfileAssociationError,
+    > {
+        Ec2::replace_iam_instance_profile_association(&(**self), input)
+    }
+
+    /// <p>Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p> <p>This is an idempotent operation.</p>
+    fn replace_network_acl_association(
+        &self,
+        input: ReplaceNetworkAclAssociationRequest,
+    ) -> RusotoFuture<ReplaceNetworkAclAssociationResult, ReplaceNetworkAclAssociationError> {
+        Ec2::replace_network_acl_association(&(**self), input)
+    }
+
+    /// <p>Replaces an entry (rule) in a network ACL. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn replace_network_acl_entry(
+        &self,
+        input: ReplaceNetworkAclEntryRequest,
+    ) -> RusotoFuture<(), ReplaceNetworkAclEntryError> {
+        Ec2::replace_network_acl_entry(&(**self), input)
+    }
+
+    /// <p>Replaces an existing route within a route table in a VPC. You must provide only one of the following: Internet gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, or egress-only Internet gateway.</p> <p>For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn replace_route(&self, input: ReplaceRouteRequest) -> RusotoFuture<(), ReplaceRouteError> {
+        Ec2::replace_route(&(**self), input)
+    }
+
+    /// <p>Changes the route table associated with a given subnet in a VPC. After the operation completes, the subnet uses the routes in the new route table it's associated with. For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p> <p>You can also use ReplaceRouteTableAssociation to change which table is the main route table in the VPC. You just specify the main route table's association ID and the route table to be the new main route table.</p>
+    fn replace_route_table_association(
+        &self,
+        input: ReplaceRouteTableAssociationRequest,
+    ) -> RusotoFuture<ReplaceRouteTableAssociationResult, ReplaceRouteTableAssociationError> {
+        Ec2::replace_route_table_association(&(**self), input)
+    }
+
+    /// <p>Submits feedback about the status of an instance. The instance must be in the <code>running</code> state. If your experience with the instance differs from the instance status returned by <a>DescribeInstanceStatus</a>, use <a>ReportInstanceStatus</a> to report your experience with the instance. Amazon EC2 collects this information to improve the accuracy of status checks.</p> <p>Use of this action does not change the value returned by <a>DescribeInstanceStatus</a>.</p>
+    fn report_instance_status(
+        &self,
+        input: ReportInstanceStatusRequest,
+    ) -> RusotoFuture<(), ReportInstanceStatusError> {
+        Ec2::report_instance_status(&(**self), input)
+    }
+
+    /// <p>Creates a Spot Fleet request.</p> <p>The Spot Fleet request specifies the total target capacity and the On-Demand target capacity. Amazon EC2 calculates the difference between the total capacity and On-Demand capacity, and launches the difference as Spot capacity.</p> <p>You can submit a single request that includes multiple launch specifications that vary by instance type, AMI, Availability Zone, or subnet.</p> <p>By default, the Spot Fleet requests Spot Instances in the Spot pool where the price per unit is the lowest. Each launch specification can include its own instance weighting that reflects the value of the instance type to your application workload.</p> <p>Alternatively, you can specify that the Spot Fleet distribute the target capacity across the Spot pools included in its launch specifications. By ensuring that the Spot Instances in your Spot Fleet are in different Spot pools, you can improve the availability of your fleet.</p> <p>You can specify tags for the Spot Instances. You cannot tag other resource types in a Spot Fleet request because only the <code>instance</code> resource type is supported.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html">Spot Fleet Requests</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
+    fn request_spot_fleet(
+        &self,
+        input: RequestSpotFleetRequest,
+    ) -> RusotoFuture<RequestSpotFleetResponse, RequestSpotFleetError> {
+        Ec2::request_spot_fleet(&(**self), input)
+    }
+
+    /// <p>Creates a Spot Instance request.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html">Spot Instance Requests</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
+    fn request_spot_instances(
+        &self,
+        input: RequestSpotInstancesRequest,
+    ) -> RusotoFuture<RequestSpotInstancesResult, RequestSpotInstancesError> {
+        Ec2::request_spot_instances(&(**self), input)
+    }
+
+    /// <p>Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value. You can only reset the load permission attribute.</p>
+    fn reset_fpga_image_attribute(
+        &self,
+        input: ResetFpgaImageAttributeRequest,
+    ) -> RusotoFuture<ResetFpgaImageAttributeResult, ResetFpgaImageAttributeError> {
+        Ec2::reset_fpga_image_attribute(&(**self), input)
+    }
+
+    /// <p><p>Resets an attribute of an AMI to its default value.</p> <note> <p>The productCodes attribute can&#39;t be reset.</p> </note></p>
+    fn reset_image_attribute(
+        &self,
+        input: ResetImageAttributeRequest,
+    ) -> RusotoFuture<(), ResetImageAttributeError> {
+        Ec2::reset_image_attribute(&(**self), input)
+    }
+
+    /// <p>Resets an attribute of an instance to its default value. To reset the <code>kernel</code> or <code>ramdisk</code>, the instance must be in a stopped state. To reset the <code>sourceDestCheck</code>, the instance can be either running or stopped.</p> <p>The <code>sourceDestCheck</code> attribute controls whether source/destination checking is enabled. The default value is <code>true</code>, which means checking is enabled. This value must be <code>false</code> for a NAT instance to perform NAT. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+    fn reset_instance_attribute(
+        &self,
+        input: ResetInstanceAttributeRequest,
+    ) -> RusotoFuture<(), ResetInstanceAttributeError> {
+        Ec2::reset_instance_attribute(&(**self), input)
+    }
+
+    /// <p>Resets a network interface attribute. You can specify only one attribute at a time.</p>
+    fn reset_network_interface_attribute(
+        &self,
+        input: ResetNetworkInterfaceAttributeRequest,
+    ) -> RusotoFuture<(), ResetNetworkInterfaceAttributeError> {
+        Ec2::reset_network_interface_attribute(&(**self), input)
+    }
+
+    /// <p>Resets permission settings for the specified snapshot.</p> <p>For more information about modifying snapshot permissions, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html">Sharing Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn reset_snapshot_attribute(
+        &self,
+        input: ResetSnapshotAttributeRequest,
+    ) -> RusotoFuture<(), ResetSnapshotAttributeError> {
+        Ec2::reset_snapshot_attribute(&(**self), input)
+    }
+
+    /// <p>Restores an Elastic IP address that was previously moved to the EC2-VPC platform back to the EC2-Classic platform. You cannot move an Elastic IP address that was originally allocated for use in EC2-VPC. The Elastic IP address must not be associated with an instance or network interface.</p>
+    fn restore_address_to_classic(
+        &self,
+        input: RestoreAddressToClassicRequest,
+    ) -> RusotoFuture<RestoreAddressToClassicResult, RestoreAddressToClassicError> {
+        Ec2::restore_address_to_classic(&(**self), input)
+    }
+
+    /// <p>[EC2-VPC only] Removes one or more egress rules from a security group for EC2-VPC. This action doesn't apply to security groups for use in EC2-Classic. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.</p> <p>Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. If the security group rule has a description, you do not have to specify the description to revoke the rule.</p> <p>Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</p>
+    fn revoke_security_group_egress(
+        &self,
+        input: RevokeSecurityGroupEgressRequest,
+    ) -> RusotoFuture<(), RevokeSecurityGroupEgressError> {
+        Ec2::revoke_security_group_egress(&(**self), input)
+    }
+
+    /// <p>Removes one or more ingress rules from a security group. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.</p> <note> <p>[EC2-Classic security groups only] If the values you specify do not match the existing rule's values, no error is returned. Use <a>DescribeSecurityGroups</a> to verify that the rule has been removed.</p> </note> <p>Each rule consists of the protocol and the CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. If the security group rule has a description, you do not have to specify the description to revoke the rule.</p> <p>Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</p>
+    fn revoke_security_group_ingress(
+        &self,
+        input: RevokeSecurityGroupIngressRequest,
+    ) -> RusotoFuture<(), RevokeSecurityGroupIngressError> {
+        Ec2::revoke_security_group_ingress(&(**self), input)
+    }
+
+    /// <p>Launches the specified number of instances using an AMI for which you have permissions. </p> <p>You can specify a number of options, or leave the default options. The following rules apply:</p> <ul> <li> <p>[EC2-VPC] If you don't specify a subnet ID, we choose a default subnet from your default VPC for you. If you don't have a default VPC, you must specify a subnet ID in the request.</p> </li> <li> <p>[EC2-Classic] If don't specify an Availability Zone, we choose one for you.</p> </li> <li> <p>Some instance types must be launched into a VPC. If you do not have a default VPC, or if you do not specify a subnet ID, the request fails. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types">Instance Types Available Only in a VPC</a>.</p> </li> <li> <p>[EC2-VPC] All instances have a network interface with a primary private IPv4 address. If you don't specify this address, we choose one from the IPv4 range of your subnet.</p> </li> <li> <p>Not all instance types support IPv6 addresses. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a>.</p> </li> <li> <p>If you don't specify a security group ID, we use the default security group. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security Groups</a>.</p> </li> <li> <p>If any of the AMIs have a product code attached for which the user has not subscribed, the request fails.</p> </li> </ul> <p>You can create a <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html">launch template</a>, which is a resource that contains the parameters to launch an instance. When you launch an instance using <a>RunInstances</a>, you can specify the launch template instead of specifying the launch parameters.</p> <p>To ensure faster instance launches, break up large requests into smaller batches. For example, create five separate launch requests for 100 instances each instead of one launch request for 500 instances.</p> <p>An instance is ready for you to use when it's in the <code>running</code> state. You can check the state of your instance using <a>DescribeInstances</a>. You can tag instances and EBS volumes during launch, after launch, or both. For more information, see <a>CreateTags</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a>.</p> <p>Linux instances have access to the public key of the key pair at boot. You can use this key to provide secure access to the instance. Amazon EC2 public images use this feature to provide secure access without passwords. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>For troubleshooting, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html">What To Do If An Instance Immediately Terminates</a>, and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html">Troubleshooting Connecting to Your Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn run_instances(
+        &self,
+        input: RunInstancesRequest,
+    ) -> RusotoFuture<Reservation, RunInstancesError> {
+        Ec2::run_instances(&(**self), input)
+    }
+
+    /// <p>Launches the specified Scheduled Instances.</p> <p>Before you can launch a Scheduled Instance, you must purchase it and obtain an identifier using <a>PurchaseScheduledInstances</a>.</p> <p>You must launch a Scheduled Instance during its scheduled time period. You can't stop or reboot a Scheduled Instance, but you can terminate it as needed. If you terminate a Scheduled Instance before the current scheduled time period ends, you can launch it again after a few minutes. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html">Scheduled Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn run_scheduled_instances(
+        &self,
+        input: RunScheduledInstancesRequest,
+    ) -> RusotoFuture<RunScheduledInstancesResult, RunScheduledInstancesError> {
+        Ec2::run_scheduled_instances(&(**self), input)
+    }
+
+    /// <p>Starts an Amazon EBS-backed instance that you've previously stopped.</p> <p>Instances that use Amazon EBS volumes as their root devices can be quickly stopped and started. When an instance is stopped, the compute resources are released and you are not billed for instance usage. However, your root partition Amazon EBS volume remains and continues to persist your data, and you are charged for Amazon EBS volume usage. You can restart your instance at any time. Every time you start your Windows instance, Amazon EC2 charges you for a full instance hour. If you stop and restart your Windows instance, a new instance hour begins and Amazon EC2 charges you for another full instance hour even if you are still within the same 60-minute period when it was stopped. Every time you start your Linux instance, Amazon EC2 charges a one-minute minimum for instance usage, and thereafter charges per second for instance usage.</p> <p>Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an instance does not preserve data stored in RAM.</p> <p>Performing this operation on an instance that uses an instance store as its root device returns an error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html">Stopping Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn start_instances(
+        &self,
+        input: StartInstancesRequest,
+    ) -> RusotoFuture<StartInstancesResult, StartInstancesError> {
+        Ec2::start_instances(&(**self), input)
+    }
+
+    /// <p>Stops an Amazon EBS-backed instance.</p> <p>We don't charge usage for a stopped instance, or data transfer fees; however, your root partition Amazon EBS volume remains and continues to persist your data, and you are charged for Amazon EBS volume usage. Every time you start your Windows instance, Amazon EC2 charges you for a full instance hour. If you stop and restart your Windows instance, a new instance hour begins and Amazon EC2 charges you for another full instance hour even if you are still within the same 60-minute period when it was stopped. Every time you start your Linux instance, Amazon EC2 charges a one-minute minimum for instance usage, and thereafter charges per second for instance usage.</p> <p>You can't start or stop Spot Instances, and you can't stop instance store-backed instances.</p> <p>When you stop an instance, we shut it down. You can restart your instance at any time. Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an instance does not preserve data stored in RAM.</p> <p>Stopping an instance is different to rebooting or terminating it. For example, when you stop an instance, the root device and any other devices attached to the instance persist. When you terminate an instance, the root device and any other devices attached during the instance launch are automatically deleted. For more information about the differences between rebooting, stopping, and terminating instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>When you stop an instance, we attempt to shut it down forcibly after a short while. If your instance appears stuck in the stopping state after a period of time, there may be an issue with the underlying host computer. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html">Troubleshooting Stopping Your Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn stop_instances(
+        &self,
+        input: StopInstancesRequest,
+    ) -> RusotoFuture<StopInstancesResult, StopInstancesError> {
+        Ec2::stop_instances(&(**self), input)
+    }
+
+    /// <p>Shuts down one or more instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds. </p> <p>If you specify multiple instances and the request fails (for example, because of a single incorrect instance ID), none of the instances are terminated.</p> <p>Terminated instances remain visible after termination (for approximately one hour).</p> <p>By default, Amazon EC2 deletes all EBS volumes that were attached when the instance launched. Volumes attached after instance launch continue running.</p> <p>You can stop, start, and terminate EBS-backed instances. You can only terminate instance store-backed instances. What happens to an instance differs if you stop it or terminate it. For example, when you stop an instance, the root device and any other devices attached to the instance persist. When you terminate an instance, any attached EBS volumes with the <code>DeleteOnTermination</code> block device mapping parameter set to <code>true</code> are automatically deleted. For more information about the differences between stopping and terminating instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>For more information about troubleshooting, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html">Troubleshooting Terminating Your Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn terminate_instances(
+        &self,
+        input: TerminateInstancesRequest,
+    ) -> RusotoFuture<TerminateInstancesResult, TerminateInstancesError> {
+        Ec2::terminate_instances(&(**self), input)
+    }
+
+    /// <p>Unassigns one or more IPv6 addresses from a network interface.</p>
+    fn unassign_ipv_6_addresses(
+        &self,
+        input: UnassignIpv6AddressesRequest,
+    ) -> RusotoFuture<UnassignIpv6AddressesResult, UnassignIpv6AddressesError> {
+        Ec2::unassign_ipv_6_addresses(&(**self), input)
+    }
+
+    /// <p>Unassigns one or more secondary private IP addresses from a network interface.</p>
+    fn unassign_private_ip_addresses(
+        &self,
+        input: UnassignPrivateIpAddressesRequest,
+    ) -> RusotoFuture<(), UnassignPrivateIpAddressesError> {
+        Ec2::unassign_private_ip_addresses(&(**self), input)
+    }
+
+    /// <p>Disables detailed monitoring for a running instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances and Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+    fn unmonitor_instances(
+        &self,
+        input: UnmonitorInstancesRequest,
+    ) -> RusotoFuture<UnmonitorInstancesResult, UnmonitorInstancesError> {
+        Ec2::unmonitor_instances(&(**self), input)
+    }
+
+    /// <p>[EC2-VPC only] Updates the description of an egress (outbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously.</p> <p>You specify the description as part of the IP permissions structure. You can remove a description for a security group rule by omitting the description parameter in the request.</p>
+    fn update_security_group_rule_descriptions_egress(
+        &self,
+        input: UpdateSecurityGroupRuleDescriptionsEgressRequest,
+    ) -> RusotoFuture<
+        UpdateSecurityGroupRuleDescriptionsEgressResult,
+        UpdateSecurityGroupRuleDescriptionsEgressError,
+    > {
+        Ec2::update_security_group_rule_descriptions_egress(&(**self), input)
+    }
+
+    /// <p>Updates the description of an ingress (inbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously.</p> <p>You specify the description as part of the IP permissions structure. You can remove a description for a security group rule by omitting the description parameter in the request.</p>
+    fn update_security_group_rule_descriptions_ingress(
+        &self,
+        input: UpdateSecurityGroupRuleDescriptionsIngressRequest,
+    ) -> RusotoFuture<
+        UpdateSecurityGroupRuleDescriptionsIngressResult,
+        UpdateSecurityGroupRuleDescriptionsIngressError,
+    > {
+        Ec2::update_security_group_rule_descriptions_ingress(&(**self), input)
+    }
+}
+
 #[cfg(test)]
 mod protocol_tests {
 
