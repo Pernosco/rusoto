@@ -1,0 +1,760 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `rusoto_workmail` crate."><meta name="keywords" content="rust, rustlang, rust-lang, rusoto_workmail"><title>rusoto_workmail - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../rusoto_workmail/index.html'><img src='https://raw.githubusercontent.com/rusoto/rusoto/master/assets/logo-square.png' alt='logo' width='100'></a><p class='location'>Crate rusoto_workmail</p><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all rusoto_workmail's items</p></a><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'rusoto_workmail', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/rusoto_workmail/lib.rs.html#14-30' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>rusoto_workmail</a></span></h1><div class='docblock'><p>Amazon WorkMail is a secure, managed business email and calendaring service with support for existing desktop and mobile email clients. You can access your email, contacts, and calendars using Microsoft Outlook, your browser, or their native iOS and Android email applications. You can integrate Amazon WorkMail with your existing corporate directory and control both the keys that encrypt your data and the location in which your data is stored.</p> <p>The Amazon WorkMail API is designed for the following scenarios:</p> <ul> <li> <p>Listing and describing organizations</p> </li> </ul> <ul> <li> <p>Managing users</p> </li> </ul> <ul> <li> <p>Managing groups</p> </li> </ul> <ul> <li> <p>Managing resources</p> </li> </ul> <p>All Amazon WorkMail API actions are Amazon-authenticated and certificate-signed. They not only require the use of the AWS SDK, but also allow for the exclusive use of IAM users and roles to help facilitate access, trust, and permission policies. By creating a role and allowing an IAM user to access the Amazon WorkMail site, the IAM user gains full administrative visibility into the entire Amazon WorkMail organization (or as set in the IAM policy). This includes, but is not limited to, the ability to create, update, and delete users, groups, and resources. This allows developers to perform the scenarios listed above, as well as give users the ability to grant access on a selective basis using the IAM model.</p>
+<p>If you're using the service, you're probably looking for <a href="struct.WorkmailClient.html">WorkmailClient</a> and <a href="trait.Workmail.html">Workmail</a>.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.AssociateDelegateToResourceRequest.html"
+                                  title='struct rusoto_workmail::AssociateDelegateToResourceRequest'>AssociateDelegateToResourceRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.AssociateDelegateToResourceResponse.html"
+                                  title='struct rusoto_workmail::AssociateDelegateToResourceResponse'>AssociateDelegateToResourceResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.AssociateMemberToGroupRequest.html"
+                                  title='struct rusoto_workmail::AssociateMemberToGroupRequest'>AssociateMemberToGroupRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.AssociateMemberToGroupResponse.html"
+                                  title='struct rusoto_workmail::AssociateMemberToGroupResponse'>AssociateMemberToGroupResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.BookingOptions.html"
+                                  title='struct rusoto_workmail::BookingOptions'>BookingOptions</a></td>
+                           <td class='docblock-short'>
+                                <p>At least one delegate must be associated to the resource to disable automatic replies from the resource.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CreateAliasRequest.html"
+                                  title='struct rusoto_workmail::CreateAliasRequest'>CreateAliasRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CreateAliasResponse.html"
+                                  title='struct rusoto_workmail::CreateAliasResponse'>CreateAliasResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CreateGroupRequest.html"
+                                  title='struct rusoto_workmail::CreateGroupRequest'>CreateGroupRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CreateGroupResponse.html"
+                                  title='struct rusoto_workmail::CreateGroupResponse'>CreateGroupResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CreateResourceRequest.html"
+                                  title='struct rusoto_workmail::CreateResourceRequest'>CreateResourceRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CreateResourceResponse.html"
+                                  title='struct rusoto_workmail::CreateResourceResponse'>CreateResourceResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CreateUserRequest.html"
+                                  title='struct rusoto_workmail::CreateUserRequest'>CreateUserRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CreateUserResponse.html"
+                                  title='struct rusoto_workmail::CreateUserResponse'>CreateUserResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Delegate.html"
+                                  title='struct rusoto_workmail::Delegate'>Delegate</a></td>
+                           <td class='docblock-short'>
+                                <p>The name of the attribute, which is one of the values defined in the UserAttribute enumeration.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeleteAliasRequest.html"
+                                  title='struct rusoto_workmail::DeleteAliasRequest'>DeleteAliasRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeleteAliasResponse.html"
+                                  title='struct rusoto_workmail::DeleteAliasResponse'>DeleteAliasResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeleteGroupRequest.html"
+                                  title='struct rusoto_workmail::DeleteGroupRequest'>DeleteGroupRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeleteGroupResponse.html"
+                                  title='struct rusoto_workmail::DeleteGroupResponse'>DeleteGroupResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeleteMailboxPermissionsRequest.html"
+                                  title='struct rusoto_workmail::DeleteMailboxPermissionsRequest'>DeleteMailboxPermissionsRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeleteMailboxPermissionsResponse.html"
+                                  title='struct rusoto_workmail::DeleteMailboxPermissionsResponse'>DeleteMailboxPermissionsResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeleteResourceRequest.html"
+                                  title='struct rusoto_workmail::DeleteResourceRequest'>DeleteResourceRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeleteResourceResponse.html"
+                                  title='struct rusoto_workmail::DeleteResourceResponse'>DeleteResourceResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeleteUserRequest.html"
+                                  title='struct rusoto_workmail::DeleteUserRequest'>DeleteUserRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeleteUserResponse.html"
+                                  title='struct rusoto_workmail::DeleteUserResponse'>DeleteUserResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeregisterFromWorkMailRequest.html"
+                                  title='struct rusoto_workmail::DeregisterFromWorkMailRequest'>DeregisterFromWorkMailRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DeregisterFromWorkMailResponse.html"
+                                  title='struct rusoto_workmail::DeregisterFromWorkMailResponse'>DeregisterFromWorkMailResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DescribeGroupRequest.html"
+                                  title='struct rusoto_workmail::DescribeGroupRequest'>DescribeGroupRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DescribeGroupResponse.html"
+                                  title='struct rusoto_workmail::DescribeGroupResponse'>DescribeGroupResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DescribeOrganizationRequest.html"
+                                  title='struct rusoto_workmail::DescribeOrganizationRequest'>DescribeOrganizationRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DescribeOrganizationResponse.html"
+                                  title='struct rusoto_workmail::DescribeOrganizationResponse'>DescribeOrganizationResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DescribeResourceRequest.html"
+                                  title='struct rusoto_workmail::DescribeResourceRequest'>DescribeResourceRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DescribeResourceResponse.html"
+                                  title='struct rusoto_workmail::DescribeResourceResponse'>DescribeResourceResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DescribeUserRequest.html"
+                                  title='struct rusoto_workmail::DescribeUserRequest'>DescribeUserRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DescribeUserResponse.html"
+                                  title='struct rusoto_workmail::DescribeUserResponse'>DescribeUserResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DisassociateDelegateFromResourceRequest.html"
+                                  title='struct rusoto_workmail::DisassociateDelegateFromResourceRequest'>DisassociateDelegateFromResourceRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DisassociateDelegateFromResourceResponse.html"
+                                  title='struct rusoto_workmail::DisassociateDelegateFromResourceResponse'>DisassociateDelegateFromResourceResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DisassociateMemberFromGroupRequest.html"
+                                  title='struct rusoto_workmail::DisassociateMemberFromGroupRequest'>DisassociateMemberFromGroupRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DisassociateMemberFromGroupResponse.html"
+                                  title='struct rusoto_workmail::DisassociateMemberFromGroupResponse'>DisassociateMemberFromGroupResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Group.html"
+                                  title='struct rusoto_workmail::Group'>Group</a></td>
+                           <td class='docblock-short'>
+                                <p>The representation of an Amazon WorkMail group.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListAliasesRequest.html"
+                                  title='struct rusoto_workmail::ListAliasesRequest'>ListAliasesRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListAliasesResponse.html"
+                                  title='struct rusoto_workmail::ListAliasesResponse'>ListAliasesResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListGroupMembersRequest.html"
+                                  title='struct rusoto_workmail::ListGroupMembersRequest'>ListGroupMembersRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListGroupMembersResponse.html"
+                                  title='struct rusoto_workmail::ListGroupMembersResponse'>ListGroupMembersResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListGroupsRequest.html"
+                                  title='struct rusoto_workmail::ListGroupsRequest'>ListGroupsRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListGroupsResponse.html"
+                                  title='struct rusoto_workmail::ListGroupsResponse'>ListGroupsResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListMailboxPermissionsRequest.html"
+                                  title='struct rusoto_workmail::ListMailboxPermissionsRequest'>ListMailboxPermissionsRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListMailboxPermissionsResponse.html"
+                                  title='struct rusoto_workmail::ListMailboxPermissionsResponse'>ListMailboxPermissionsResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListOrganizationsRequest.html"
+                                  title='struct rusoto_workmail::ListOrganizationsRequest'>ListOrganizationsRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListOrganizationsResponse.html"
+                                  title='struct rusoto_workmail::ListOrganizationsResponse'>ListOrganizationsResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListResourceDelegatesRequest.html"
+                                  title='struct rusoto_workmail::ListResourceDelegatesRequest'>ListResourceDelegatesRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListResourceDelegatesResponse.html"
+                                  title='struct rusoto_workmail::ListResourceDelegatesResponse'>ListResourceDelegatesResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListResourcesRequest.html"
+                                  title='struct rusoto_workmail::ListResourcesRequest'>ListResourcesRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListResourcesResponse.html"
+                                  title='struct rusoto_workmail::ListResourcesResponse'>ListResourcesResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListUsersRequest.html"
+                                  title='struct rusoto_workmail::ListUsersRequest'>ListUsersRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ListUsersResponse.html"
+                                  title='struct rusoto_workmail::ListUsersResponse'>ListUsersResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Member.html"
+                                  title='struct rusoto_workmail::Member'>Member</a></td>
+                           <td class='docblock-short'>
+                                <p>The representation of a group member (user or group).</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.OrganizationSummary.html"
+                                  title='struct rusoto_workmail::OrganizationSummary'>OrganizationSummary</a></td>
+                           <td class='docblock-short'>
+                                <p>The brief overview associated with an organization.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Permission.html"
+                                  title='struct rusoto_workmail::Permission'>Permission</a></td>
+                           <td class='docblock-short'>
+                                <p>Permission granted to an entity (user, group) to access a certain aspect of another entity's mailbox.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.PutMailboxPermissionsRequest.html"
+                                  title='struct rusoto_workmail::PutMailboxPermissionsRequest'>PutMailboxPermissionsRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.PutMailboxPermissionsResponse.html"
+                                  title='struct rusoto_workmail::PutMailboxPermissionsResponse'>PutMailboxPermissionsResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RegisterToWorkMailRequest.html"
+                                  title='struct rusoto_workmail::RegisterToWorkMailRequest'>RegisterToWorkMailRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RegisterToWorkMailResponse.html"
+                                  title='struct rusoto_workmail::RegisterToWorkMailResponse'>RegisterToWorkMailResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ResetPasswordRequest.html"
+                                  title='struct rusoto_workmail::ResetPasswordRequest'>ResetPasswordRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ResetPasswordResponse.html"
+                                  title='struct rusoto_workmail::ResetPasswordResponse'>ResetPasswordResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Resource.html"
+                                  title='struct rusoto_workmail::Resource'>Resource</a></td>
+                           <td class='docblock-short'>
+                                <p>The overview for a resource containing relevant data regarding it.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.UpdatePrimaryEmailAddressRequest.html"
+                                  title='struct rusoto_workmail::UpdatePrimaryEmailAddressRequest'>UpdatePrimaryEmailAddressRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.UpdatePrimaryEmailAddressResponse.html"
+                                  title='struct rusoto_workmail::UpdatePrimaryEmailAddressResponse'>UpdatePrimaryEmailAddressResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.UpdateResourceRequest.html"
+                                  title='struct rusoto_workmail::UpdateResourceRequest'>UpdateResourceRequest</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.UpdateResourceResponse.html"
+                                  title='struct rusoto_workmail::UpdateResourceResponse'>UpdateResourceResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.User.html"
+                                  title='struct rusoto_workmail::User'>User</a></td>
+                           <td class='docblock-short'>
+                                <p>The representation of an Amazon WorkMail user.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.WorkmailClient.html"
+                                  title='struct rusoto_workmail::WorkmailClient'>WorkmailClient</a></td>
+                           <td class='docblock-short'>
+                                <p>A client for the Amazon WorkMail API.</p>
+
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.AssociateDelegateToResourceError.html"
+                                  title='enum rusoto_workmail::AssociateDelegateToResourceError'>AssociateDelegateToResourceError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by AssociateDelegateToResource</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.AssociateMemberToGroupError.html"
+                                  title='enum rusoto_workmail::AssociateMemberToGroupError'>AssociateMemberToGroupError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by AssociateMemberToGroup</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.CreateAliasError.html"
+                                  title='enum rusoto_workmail::CreateAliasError'>CreateAliasError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by CreateAlias</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.CreateGroupError.html"
+                                  title='enum rusoto_workmail::CreateGroupError'>CreateGroupError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by CreateGroup</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.CreateResourceError.html"
+                                  title='enum rusoto_workmail::CreateResourceError'>CreateResourceError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by CreateResource</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.CreateUserError.html"
+                                  title='enum rusoto_workmail::CreateUserError'>CreateUserError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by CreateUser</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DeleteAliasError.html"
+                                  title='enum rusoto_workmail::DeleteAliasError'>DeleteAliasError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DeleteAlias</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DeleteGroupError.html"
+                                  title='enum rusoto_workmail::DeleteGroupError'>DeleteGroupError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DeleteGroup</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DeleteMailboxPermissionsError.html"
+                                  title='enum rusoto_workmail::DeleteMailboxPermissionsError'>DeleteMailboxPermissionsError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DeleteMailboxPermissions</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DeleteResourceError.html"
+                                  title='enum rusoto_workmail::DeleteResourceError'>DeleteResourceError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DeleteResource</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DeleteUserError.html"
+                                  title='enum rusoto_workmail::DeleteUserError'>DeleteUserError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DeleteUser</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DeregisterFromWorkMailError.html"
+                                  title='enum rusoto_workmail::DeregisterFromWorkMailError'>DeregisterFromWorkMailError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DeregisterFromWorkMail</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DescribeGroupError.html"
+                                  title='enum rusoto_workmail::DescribeGroupError'>DescribeGroupError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DescribeGroup</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DescribeOrganizationError.html"
+                                  title='enum rusoto_workmail::DescribeOrganizationError'>DescribeOrganizationError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DescribeOrganization</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DescribeResourceError.html"
+                                  title='enum rusoto_workmail::DescribeResourceError'>DescribeResourceError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DescribeResource</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DescribeUserError.html"
+                                  title='enum rusoto_workmail::DescribeUserError'>DescribeUserError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DescribeUser</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DisassociateDelegateFromResourceError.html"
+                                  title='enum rusoto_workmail::DisassociateDelegateFromResourceError'>DisassociateDelegateFromResourceError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DisassociateDelegateFromResource</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DisassociateMemberFromGroupError.html"
+                                  title='enum rusoto_workmail::DisassociateMemberFromGroupError'>DisassociateMemberFromGroupError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by DisassociateMemberFromGroup</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ListAliasesError.html"
+                                  title='enum rusoto_workmail::ListAliasesError'>ListAliasesError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by ListAliases</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ListGroupMembersError.html"
+                                  title='enum rusoto_workmail::ListGroupMembersError'>ListGroupMembersError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by ListGroupMembers</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ListGroupsError.html"
+                                  title='enum rusoto_workmail::ListGroupsError'>ListGroupsError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by ListGroups</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ListMailboxPermissionsError.html"
+                                  title='enum rusoto_workmail::ListMailboxPermissionsError'>ListMailboxPermissionsError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by ListMailboxPermissions</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ListOrganizationsError.html"
+                                  title='enum rusoto_workmail::ListOrganizationsError'>ListOrganizationsError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by ListOrganizations</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ListResourceDelegatesError.html"
+                                  title='enum rusoto_workmail::ListResourceDelegatesError'>ListResourceDelegatesError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by ListResourceDelegates</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ListResourcesError.html"
+                                  title='enum rusoto_workmail::ListResourcesError'>ListResourcesError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by ListResources</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ListUsersError.html"
+                                  title='enum rusoto_workmail::ListUsersError'>ListUsersError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by ListUsers</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.PutMailboxPermissionsError.html"
+                                  title='enum rusoto_workmail::PutMailboxPermissionsError'>PutMailboxPermissionsError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by PutMailboxPermissions</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.RegisterToWorkMailError.html"
+                                  title='enum rusoto_workmail::RegisterToWorkMailError'>RegisterToWorkMailError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by RegisterToWorkMail</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ResetPasswordError.html"
+                                  title='enum rusoto_workmail::ResetPasswordError'>ResetPasswordError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by ResetPassword</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.UpdatePrimaryEmailAddressError.html"
+                                  title='enum rusoto_workmail::UpdatePrimaryEmailAddressError'>UpdatePrimaryEmailAddressError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by UpdatePrimaryEmailAddress</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.UpdateResourceError.html"
+                                  title='enum rusoto_workmail::UpdateResourceError'>UpdateResourceError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors returned by UpdateResource</p>
+
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Workmail.html"
+                                  title='trait rusoto_workmail::Workmail'>Workmail</a></td>
+                           <td class='docblock-short'>
+                                <p>Trait representing the capabilities of the Amazon WorkMail API. Amazon WorkMail clients implement this trait.</p>
+
+                           </td>
+                       </tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../";window.currentCrate = "rusoto_workmail";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>
