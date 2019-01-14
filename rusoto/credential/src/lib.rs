@@ -14,6 +14,7 @@ extern crate dirs;
 extern crate futures;
 extern crate hyper;
 extern crate regex;
+extern crate serde;
 extern crate serde_json;
 #[macro_use]
 extern crate serde_derive;
@@ -48,6 +49,19 @@ use chrono::{DateTime, Duration as ChronoDuration, ParseError, Utc};
 use futures::future::{err, Either, Shared, SharedItem};
 use futures::{Async, Future, Poll};
 use hyper::Error as HyperError;
+use serde::{Deserialize, Deserializer};
+
+fn deserialize_empty_str_as_none<'de, D>(deserializer: D) -> Result<Option<String>, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    let r: Option<String> = Deserialize::deserialize(deserializer)?;
+    if r.as_ref().map(|s| s.is_empty()).unwrap_or(false) {
+        Ok(None)
+    } else {
+        Ok(r)
+    }
+}
 
 /// AWS API access credentials, including access key, secret key, token (for IAM profiles),
 /// expiration timestamp, and claims from federated login.
@@ -57,7 +71,7 @@ pub struct AwsCredentials {
     key: String,
     #[serde(rename = "SecretAccessKey")]
     secret: String,
-    #[serde(rename = "Token")]
+    #[serde(rename = "Token", deserialize_with="deserialize_empty_str_as_none")]
     token: Option<String>,
     #[serde(rename = "Expiration")]
     expires_at: Option<DateTime<Utc>>,
