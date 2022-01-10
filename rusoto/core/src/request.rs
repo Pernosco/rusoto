@@ -31,6 +31,8 @@ use log::*;
 use crate::signature::SignedRequest;
 use crate::stream::ByteStream;
 use crate::tls::HttpsConnector;
+#[cfg(any(feature = "rustls", feature = "rustls-webpki"))]
+use crate::tls::HttpsConnectorBuilder;
 
 // Pulls in the statically generated rustc version.
 include!(concat!(env!("OUT_DIR"), "/user_agent_vars.rs"));
@@ -224,10 +226,20 @@ impl HttpClient {
         let connector = HttpsConnector::new();
 
         #[cfg(all(feature = "rustls", not(feature = "rustls-webpki")))]
-        let connector = HttpsConnector::with_native_roots();
+        let connector = HttpsConnectorBuilder::new()
+            .with_native_roots()
+            .https_only()
+            .enable_http1()
+            .enable_http2()
+            .build();
 
         #[cfg(feature = "rustls-webpki")]
-        let connector = HttpsConnector::with_webpki_roots();
+        let connector = HttpsConnectorBuilder::new()
+            .with_webpki_roots()
+            .https_only()
+            .enable_http1()
+            .enable_http2()
+            .build();
 
         Ok(Self::from_connector(connector))
     }
@@ -238,10 +250,20 @@ impl HttpClient {
         let connector = HttpsConnector::new();
 
         #[cfg(all(feature = "rustls", not(feature = "rustls-webpki")))]
-        let connector = HttpsConnector::with_native_roots();
+        let connector = HttpsConnectorBuilder::new()
+            .with_native_roots()
+            .https_only()
+            .enable_http1()
+            .enable_http2()
+            .build();
 
         #[cfg(feature = "rustls-webpki")]
-        let connector = HttpsConnector::with_webpki_roots();
+        let connector = HttpsConnectorBuilder::new()
+            .with_webpki_roots()
+            .https_only()
+            .enable_http1()
+            .enable_http2()
+            .build();
 
         Ok(Self::from_connector_with_config(connector, config))
     }
