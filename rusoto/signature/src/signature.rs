@@ -17,12 +17,12 @@ use std::fmt;
 use std::str;
 use std::time::Duration;
 
-use base64;
+use base64::{self, Engine};
 use bytes::Bytes;
 use chrono::{DateTime, Utc, NaiveDate};
 use digest::Digest;
 use hex;
-use hmac::{Hmac, Mac, NewMac};
+use hmac::{Hmac, Mac};
 use http::header::{HeaderMap, HeaderName, HeaderValue};
 use http::{Method, Request};
 use hyper::Body;
@@ -159,7 +159,7 @@ impl SignedRequest {
         }
         if let Some(SignedRequestPayload::Buffer(ref payload)) = self.payload {
             let digest = Md5::digest(payload);
-            self.add_header("Content-MD5", &base64::encode(&*digest));
+            self.add_header("Content-MD5", &base64::engine::general_purpose::STANDARD.encode(&*digest));
         }
     }
 
@@ -388,7 +388,7 @@ impl SignedRequest {
         let signature = sign_string(
             &string_to_sign,
             creds.aws_secret_access_key(),
-            current_time.date().naive_utc(),
+            current_time.naive_utc().into(),
             &self.region.name(),
             &self.service,
         );
@@ -493,7 +493,7 @@ impl SignedRequest {
         let signature = sign_string(
             &string_to_sign,
             creds.aws_secret_access_key(),
-            date.date().naive_utc(),
+            date.naive_utc().into(),
             &self.region_for_service(),
             &self.service,
         );

@@ -1,6 +1,6 @@
 use std::fmt::{Formatter, Result as FmtResult};
 
-use base64;
+use base64::{self, Engine};
 use bytes::Bytes;
 use serde::de::{Error as SerdeError, SeqAccess, Visitor};
 use serde::ser::SerializeSeq;
@@ -29,7 +29,7 @@ impl<'de> Visitor<'de> for BlobVisitor {
     where
         E: SerdeError,
     {
-        base64::decode(v)
+        base64::engine::general_purpose::STANDARD.decode(v)
             .map(Bytes::from)
             .map_err(|err| SerdeError::custom(err.to_string()))
     }
@@ -47,7 +47,7 @@ impl SerdeBlob for Bytes {
     where
         S: Serializer,
     {
-        serializer.serialize_str(&base64::encode(self.as_ref()))
+        serializer.serialize_str(&base64::engine::general_purpose::STANDARD.encode(self.as_ref()))
     }
 }
 
